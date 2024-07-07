@@ -1,15 +1,15 @@
-export function randomStockChange(initialValue, gameDuration = 10) {
+// stock.js
+export function randomStockChange(initialValue, gameDuration = 10, updateCallback) {
     let currentValue = initialValue;
     let dailyChange;
 
-    // Convert game duration from minutes to seconds
     let gameDurationInSeconds = 60 * gameDuration;
 
     switch (gameDuration) {
         case 10:
             dailyChange = 1.25;
             break;
-        case 15: 
+        case 15:
             dailyChange = 0.72;
             break;
         case 30:
@@ -19,23 +19,25 @@ export function randomStockChange(initialValue, gameDuration = 10) {
             dailyChange = 1.25;
     }
 
-    // Update value every second
     let intervalId = setInterval(() => {
         const percentageChange = (Math.random() * (dailyChange * 2)) - dailyChange;
         currentValue = currentValue + (currentValue * (percentageChange / 100));
-        currentValue = Math.max(0, currentValue);  // Ensure the value does not go below 0
+        currentValue = Math.max(0, currentValue);
         console.log(`New Value: ${currentValue.toFixed(2)}`);
+        if (updateCallback) updateCallback(currentValue);
     }, 1000);
 
-    // Clear the interval after the specified game duration
     setTimeout(() => {
         clearInterval(intervalId);
         console.log(`Final Value after ${gameDuration} minutes: ${currentValue.toFixed(2)}`);
     }, gameDurationInSeconds * 1000);
 }
 
-export function randomBondChange(currentValue, gameDuration = 30) {
+// bond.js
+export function randomBondChange(initialValue, gameDuration = 30, updateCallback) {
+    let currentValue = initialValue;
     let dailyChange;
+
     let gameDurationInSeconds = 60 * gameDuration;
 
     switch (gameDuration) {
@@ -55,8 +57,9 @@ export function randomBondChange(currentValue, gameDuration = 30) {
     let intervalId = setInterval(() => {
         const percentageChange = (Math.random() * (dailyChange * 2)) - dailyChange;
         currentValue = currentValue + (currentValue * (percentageChange / 100));
-        currentValue = Math.max(0, currentValue);  // Ensure the value does not go below 0
+        currentValue = Math.max(0, currentValue);
         console.log(`New Value: ${currentValue.toFixed(2)}`);
+        if (updateCallback) updateCallback(currentValue);
     }, 1000);
 
     setTimeout(() => {
@@ -64,4 +67,3 @@ export function randomBondChange(currentValue, gameDuration = 30) {
         console.log(`Final Value after ${gameDuration} minutes: ${currentValue.toFixed(2)}`);
     }, gameDurationInSeconds * 1000);
 }
-
