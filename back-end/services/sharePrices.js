@@ -1,4 +1,4 @@
-function randomPercentageChange(initialValue, gameDuration = 10) {
+export function randomStockChange(initialValue, gameDuration = 10) {
     let currentValue = initialValue;
     let dailyChange;
 
@@ -34,5 +34,34 @@ function randomPercentageChange(initialValue, gameDuration = 10) {
     }, gameDurationInSeconds * 1000);
 }
 
-// Example usage
-randomPercentageChange(10000, 10);
+export function randomBondChange(currentValue, gameDuration = 30) {
+    let dailyChange;
+    let gameDurationInSeconds = 60 * gameDuration;
+
+    switch (gameDuration) {
+        case 10:
+            dailyChange = 0.32;
+            break;
+        case 15: 
+            dailyChange = 0.25;
+            break;
+        case 30:
+            dailyChange = 0.20;
+            break;
+        default:
+            dailyChange = 0.32;
+    }
+
+    let intervalId = setInterval(() => {
+        const percentageChange = (Math.random() * (dailyChange * 2)) - dailyChange;
+        currentValue = currentValue + (currentValue * (percentageChange / 100));
+        currentValue = Math.max(0, currentValue);  // Ensure the value does not go below 0
+        console.log(`New Value: ${currentValue.toFixed(2)}`);
+    }, 1000);
+
+    setTimeout(() => {
+        clearInterval(intervalId);
+        console.log(`Final Value after ${gameDuration} minutes: ${currentValue.toFixed(2)}`);
+    }, gameDurationInSeconds * 1000);
+}
+
