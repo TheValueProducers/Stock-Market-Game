@@ -1,0 +1,67 @@
+:root {
+    --m1-color: #427D9D;
+    --m2-color: #164863;
+    --bg1-color: #222831;
+    --bg2-color: #393E46;
+    --bg3-color: #00ADB5;
+    --t1-color: #DDF2FD;
+    --t2-color: #9BBEC8;
+
+}
+
+.navbar {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    height: 60px;
+    background-color:#1D2029;
+
+
+}
+
+.navbar div {
+    position: relative;
+    width: fit-content;
+    top: 10px;
+    left: 20px;
+    font-size: 40px;
+    background-color:#2CF3B6;
+    border-radius: 50px;
+    font-weight: 500;
+    padding: 5px;
+}
+
+.navbar div:hover {
+    background-color: var(--t1-color);
+}
+
+.navbar ul {
+    position: relative;
+    display: flex;
+    top: 10px;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: var(--t1-color);
+    font-size: 20px;
+    margin-right: 100px;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li:hover a {
+    padding: 10px;
+    color: var(--m1-color);
+    background-color:var(--t1-color);
+    border-radius: 50px;
+}
+
+.navbar ul li:last-child a {
+    margin: 0;
+}
