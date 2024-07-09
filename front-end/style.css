@@ -1,12 +1,20 @@
-:root {
-    --m1-color: #427D9D;
-    --m2-color: #164863;
-    --bg1-color: #222831;
-    --bg2-color: #393E46;
-    --bg3-color: #00ADB5;
-    --t1-color: #DDF2FD;
-    --t2-color: #9BBEC8;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+* {
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Playfair', sans-serif;
+}
+
+:root {
+    --bg1-color: #1D2028;
+    --bg2-color: #2CF3B6;
+    --bg3-color: #fff;
+    --t1-color: #fff;
+    --t2-color: #2CF3B6;
 }
 
 .navbar {
@@ -14,54 +22,76 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 10px;
-    height: 60px;
-    background-color:#1D2029;
-
-
+    height: 100px;
+    background-color:var(--bg1-color);
 }
 
-.navbar div {
+.navbar .logo {
     position: relative;
-    width: fit-content;
-    top: 10px;
-    left: 20px;
-    font-size: 40px;
-    background-color:#2CF3B6;
+    left: 10px;
+    background-color:var(--bg2-color);
     border-radius: 50px;
-    font-weight: 500;
-    padding: 5px;
-}
-
-.navbar div:hover {
-    background-color: var(--t1-color);
+    height: 67px;
+    width: 67px;
 }
 
 .navbar ul {
     position: relative;
     display: flex;
-    top: 10px;
 }
 
 .navbar ul li {
     list-style: none;
 }
 
-.navbar ul li a {
-    text-decoration: none;
+.dropdown-content {
+    position: absolute;
+    display: none;
+}
+
+.dropdown-content a {
+   /* position: relative;
+    display: grid;
+    gap: 10px;*/
+    text-align: center;
+    width: 274px;
+    padding: 20px 50px;
     color: var(--t1-color);
-    font-size: 20px;
+    background-color: var(--bg2-color);
+}  
+
+.dropdown-content a:hover {
+    background-color: #0DE7A6;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navbar ul li a,button {
+    position: relative;
+    display: flex;
+    border: none;
+    right: 160px;
+    background-color: var(--bg1-color);
+    color: var(--t1-color);
+    font-size: 25px;
     margin-right: 100px;
     transition: color 0.3s ease;
 }
 
-.navbar ul li:hover a {
-    padding: 10px;
-    color: var(--m1-color);
-    background-color:var(--t1-color);
-    border-radius: 50px;
+.navbar ul li .dropbtn i {
+    font-size: 35px;
+    color: var(--bg2-color);
 }
 
-.navbar ul li:last-child a {
-    margin: 0;
+.navbar .login {
+    position: relative;
+    right: 50px;
+    font-size: 60px;
+    color:var(--bg2-color);
 }
+
+
+
