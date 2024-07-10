@@ -26,10 +26,7 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
       },
-      balance_without_shares: {
-        type: Sequelize.FLOAT,
-        defaultValue: 10000,
-      },
+      
     });
   },
   down: async (queryInterface, Sequelize) => {

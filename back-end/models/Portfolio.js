@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
           key: 'player_id',
         },
       },
+      balance_without_shares: {
+        type: DataTypes.FLOAT,
+        defaultValue: 10000,
+      },
     }, {
       timestamps: false,
     });

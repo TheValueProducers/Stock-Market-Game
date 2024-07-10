@@ -1,3 +1,5 @@
+
+
 module.exports = (sequelize, DataTypes) => {
     const Game = sequelize.define('Game', {
       game_id: {
@@ -15,6 +17,21 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      difficulty: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isIn: [["IGCSE", "AS-Level", "A-Level"]]
+        }
+      },
+      time_duration: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          isIn: [["IGCSE", "AS-Level", "A-Level"]]
+        }
+      }
+      ,
       status: {
         type: DataTypes.STRING,
         allowNull: false,

@@ -15,6 +15,20 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      difficulty: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          isIn: [["IGCSE", "AS-Level", "A-Level"]] 
+        }
+      },
+      time_duration: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          isIn: [[10, 15, 30]] 
+        }
+      },
       host: {
         type: Sequelize.STRING,
         allowNull: false,

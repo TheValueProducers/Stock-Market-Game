@@ -18,6 +18,10 @@ module.exports = {
           key: 'player_id',
         },
       },
+      balance_without_shares: {
+        type: Sequelize.FLOAT,
+        defaultValue: 10000,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
