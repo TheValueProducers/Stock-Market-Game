@@ -1,27 +1,44 @@
 module.exports = (sequelize, DataTypes) => {
-    const Portfolio = sequelize.define('Portfolio', {
-      portfolio_id: {
+    const PortfolioItem = sequelize.define('PortfolioItem', {
+      portfolio_item_id: {
         type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
       },
-      player_id: {
+      portfolio_id: {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-          model: 'Players',
-          key: 'player_id',
+          model: 'Portfolios',
+          key: 'portfolio_id',
         },
+      },
+      share_id: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: 'Shares',
+          key: 'share_id',
+        },
+      },
+      quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      total_value: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
       },
     }, {
       timestamps: false,
+      tableName: 'PortfolioItems',
     });
   
-    Portfolio.associate = (models) => {
-      Portfolio.belongsTo(models.Player, { foreignKey: 'player_id' });
-      Portfolio.hasMany(models.PortfolioItem, { foreignKey: 'portfolio_id' });
+    PortfolioItem.associate = (models) => {
+      PortfolioItem.belongsTo(models.Portfolio, { foreignKey: 'portfolio_id' });
+      PortfolioItem.belongsTo(models.Share, { foreignKey: 'share_id' });
     };
   
-    return Portfolio;
+    return PortfolioItem;
   };

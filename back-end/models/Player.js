@@ -22,10 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
       },
-      balance_without_shares: {
-        type: DataTypes.FLOAT,
-        defaultValue: 10000,
-      },
+      
     }, {
       timestamps: false,
     });
