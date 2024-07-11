@@ -26,7 +26,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
-          isIn: [[10, 15, 30]] 
+          isIn: [["10", "15", "30"]] 
         }
       },
       host: {

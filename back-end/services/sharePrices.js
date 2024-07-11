@@ -1,5 +1,5 @@
 // stock.js
-export function randomStockChange(initialValue, quantity, gameDuration = 10, updateCallback) {
+function randomStockChange(initialValue, quantity, gameDuration = 10, updateCallback) {
     let currentValue = initialValue * quantity;
     let dailyChange;
 
@@ -34,7 +34,7 @@ export function randomStockChange(initialValue, quantity, gameDuration = 10, upd
 }
 
 // bond.js
-export function randomBondChange(initialValue, quantity, gameDuration = 30, updateCallback) {
+function randomBondChange(initialValue, quantity, gameDuration = 30, updateCallback) {
     let currentValue = initialValue * quantity;
     let dailyChange;
 
@@ -67,3 +67,5 @@ export function randomBondChange(initialValue, quantity, gameDuration = 30, upda
         console.log(`Final Value after ${gameDuration} minutes: ${currentValue.toFixed(2)}`);
     }, gameDurationInSeconds * 1000);
 }
+
+module.exports = {randomStockChange, randomBondChange}

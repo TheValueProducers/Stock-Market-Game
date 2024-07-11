@@ -1,13 +1,17 @@
 function checkAuthenticated(req, res, next) {
+  console.log('Checking if authenticated:', req.isAuthenticated());
+  console.log('Session:', req.session);
+  console.log('User:', req.user);
+
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect('/login');
+    res.status(401).send({message: "Unauthorized"})
   }
   
   function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return res.redirect('/home');
+      return res.status(401).send({message: "Unauthorized"})
     }
     next();
   }
@@ -31,5 +35,24 @@ async function checkGameAuthenticated(req, res, next) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }
+
+const authenticateUser = (passport) => (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.status(401).json({ message: info.message });
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      next();
+    });
+  })(req, res, next);
+};
+
+module.exports = { authenticateUser };
   
-module.exports = { checkAuthenticated, checkNotAuthenticated, checkGameAuthenticated };
+module.exports = { checkAuthenticated, checkNotAuthenticated, checkGameAuthenticated, authenticateUser };

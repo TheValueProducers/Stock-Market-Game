@@ -22,12 +22,12 @@ module.exports = function(passport) {
   }));
 
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user.user_id);
   });
 
-  passport.deserializeUser(async (id, done) => {
+  passport.deserializeUser(async (user_id, done) => {
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(user_id);
       done(null, user);
     } catch (err) {
       done(err);
