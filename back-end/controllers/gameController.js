@@ -21,6 +21,26 @@ const createGame = async (req, res) => {
   }
 };
 
+const sendGame = (req,res) => {
+    res.status(200).send({message: "Game joined successfully"})
+}
 
-module.exports = {createGame}
+const startGame = async (req, res) => {
+    try {
+      const game = await Game.findOne({ where: { host_id: req.user.user_id } });
+      if (!game) {
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+      await game.update({ status: "running" });
+      return res.status(200).json({ message: "Game started successfully" });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  };
+
+
+
+
+module.exports = {createGame, sendGame, startGame}
 

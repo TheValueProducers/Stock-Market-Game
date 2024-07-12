@@ -1,3 +1,5 @@
+const { HostNotFoundError } = require("sequelize");
+const {Game} = require("../models")
 function checkAuthenticated(req, res, next) {
   console.log('Checking if authenticated:', req.isAuthenticated());
   console.log('Session:', req.session);
@@ -28,6 +30,10 @@ async function checkGameAuthenticated(req, res, next) {
       return res.status(401).json({ message: 'Invalid game ID' });
     }
 
+    if (game.status !== "waiting"){
+      return res.status(401).json({message: "Game is running. Can not join."})
+    }
+
     req.game = game;
     next();
   } catch (error) {
@@ -36,7 +42,27 @@ async function checkGameAuthenticated(req, res, next) {
   }
 }
 
+const checkHost = async (req, res, next) => {
+  try {
+    const { game_id } = req.params;
+    const game = await Game.findOne({ where: { host_id: req.user.user_id } });
+
+    if (!game) {
+      return res.status(404).json({ message: "Game not found" });
+    }
+
+    if (game.game_id !== game_id) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    next();
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 
 
   
-module.exports = { checkAuthenticated, checkNotAuthenticated, checkGameAuthenticated};
+module.exports = { checkAuthenticated, checkNotAuthenticated, checkGameAuthenticated, checkHost};
