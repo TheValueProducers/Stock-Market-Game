@@ -16,5 +16,38 @@ async function registerUser(req,res){
         res.status(500).json({ message: 'User registration failed', error: err.message });
       }
 }
+const authenticateUser = (passport) => (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.status(401).json({ message: info.message });
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        next();
+      });
+    })(req, res, next);
+  };
 
-module.exports = {loginEndpoint, registerUser}
+
+const userLogout = (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).send({ message: 'Failed to log out' });
+      }
+      req.session.destroy((err) => {
+        if (err) {
+          return res.status(500).send({ message: 'Failed to destroy session' });
+        }
+        res.clearCookie('connect.sid'); 
+        return res.status(200).send({ message: 'Logged out successfully' });
+      });
+    });
+  };
+  
+
+module.exports = {loginEndpoint, registerUser, authenticateUser, userLogout}

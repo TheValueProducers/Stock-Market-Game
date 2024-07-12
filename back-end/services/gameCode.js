@@ -1,5 +1,5 @@
 function generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const characters = '0123456789';
     let result = '';
     const charactersLength = characters.length;
     

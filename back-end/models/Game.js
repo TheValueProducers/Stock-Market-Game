@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-          isIn: [["IGCSE", "AS-Level", "A-Level"]]
+          isIn: [["10", "15", "30"]]
         }
       }
       ,

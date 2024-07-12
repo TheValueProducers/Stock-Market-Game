@@ -1,4 +1,5 @@
 const {Player} = require("../models")
+const {Game} = require("../models")
 const authenticatePlayer = async (req, res) => {
     try {
       const { game_code, username } = req.body;
@@ -6,7 +7,6 @@ const authenticatePlayer = async (req, res) => {
       if (game) {
         const { game_id } = game;
         const new_player = await Player.create({
-          player_id: req.user.id, 
           username,
           game_id,
         });
