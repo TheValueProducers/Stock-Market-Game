@@ -1,9 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
     const Company = sequelize.define('Company', {
       company_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.STRING,
         primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
       },
       sector: {
