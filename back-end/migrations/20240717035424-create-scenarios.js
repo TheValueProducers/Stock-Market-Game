@@ -1,42 +1,41 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Shares', {
-      share_id: {
+    await queryInterface.createTable('Scenario', {
+      scenario_id: {
         type: Sequelize.UUID,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
       },
-      company_id: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
-        references: {
-          model: 'Companies',
-          key: 'company_id',
+      },
+      difficulty: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          isIn: [['IGCSE', 'AS-Level', 'A-Level']],
         },
       },
-      type: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      price: {
+      percentage_change: {
         type: Sequelize.FLOAT,
         allowNull: false,
       },
-      previous_day_price: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
+      created_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
-      recorded_at: {
+      updated_at: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
       },
     });
   },
+
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Shares');
-  },
+    await queryInterface.dropTable('Scenario');
+  }
 };

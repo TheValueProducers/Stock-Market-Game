@@ -1,25 +1,41 @@
-const {randomBondChange, randomStockChange} = require("./sharePrices")
-const {Game} = require("../models")
-const handleSocketConnection = (io) => {
-    io.on('connection', (socket) => {
-      console.log('a user connected');
-  
-      socket.on('join game', async (room) => {
-        socket.join(room);
-     
+const { randomBondChange, randomStockChange } = require("./sharePrices");
+const { Game } = require("../models");
 
-      });
+const handleSocketConnection = (io, client) => {
+  io.on('connection', (socket) => {
+    console.log('A user connected');
 
-      socket.on('start game', (room) => {
-        randomStockChange(10000, 100, 10, (stock, value) => {
-            io.to(room).emit("stock price", {newPrice: value})
-        })
-      })
-
-      socket.on('disconnect', () => {
-        console.log('user disconnected');
-      });
+    socket.on('join game', async (room) => {
+      console.log(`User joined room: ${room}`);
+      socket.join(room);
     });
-  };
-  
-  module.exports = handleSocketConnection;
+
+    socket.on('start game', async (room) => {
+      try {
+        console.log("I am REACHED -1");
+        const game = await Game.findOne({ where: { game_id: room } });
+        
+        if (!game) {
+          console.log(`Game with ID ${room} not found`);
+          return;
+        }
+
+        const difficulty = game.difficulty;
+        console.log(`I am REACHED 0, Difficulty: ${difficulty}`);
+        
+        randomStockChange(client, difficulty, 10, (stock, value) => {
+          console.log(`I am REACHED 1, Stock: ${stock}, New Price: ${value}`);
+          io.to(room).emit("stock price", { stock, newPrice: value });
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
+  });
+};
+
+module.exports = handleSocketConnection;

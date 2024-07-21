@@ -1,5 +1,6 @@
 const { HostNotFoundError } = require("sequelize");
-const {Game} = require("../models")
+const {Game} = require("../models");
+
 function checkAuthenticated(req, res, next) {
   console.log('Checking if authenticated:', req.isAuthenticated());
   console.log('Session:', req.session);
@@ -16,7 +17,12 @@ function checkAuthenticated(req, res, next) {
       return res.status(401).send({message: "Unauthorized"})
     }
     next();
-  }
+}
+
+async function checkUniqueUser(req,res,next){
+  const {username, password, email} = req.body;
+  
+}
 
 async function checkGameAuthenticated(req, res, next) {
   try {

@@ -1,5 +1,6 @@
 const {Player} = require("../models")
 const {Game} = require("../models")
+
 const authenticatePlayer = async (req, res) => {
     try {
       const { game_code, username } = req.body;

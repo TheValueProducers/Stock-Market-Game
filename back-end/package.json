@@ -18,7 +18,9 @@
     "sequelize": "^6.37.3",
     "session": "^0.1.0",
     "socket.io": "^4.7.5",
-    "socket.io-redis": "^6.1.1"
+    "socket.io-redis": "^6.1.1",
+    "uuid": "^10.0.0",
+    "uuidv4": "^6.2.13"
   },
   "name": "back-end",
   "version": "1.0.0",

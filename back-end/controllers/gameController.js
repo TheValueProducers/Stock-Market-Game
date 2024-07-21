@@ -14,16 +14,11 @@ const createGame = async (req, res) => {
       end_at: null,
       status: "waiting", 
     });
-    res.status(200).send({ game_code, message: "Game Created Successfully" });
+    res.status(200).send({ game_id: new_game.game_id, game_code, message: "Game Created Successfully" });
   } catch (err) {
     console.error(err);
     res.status(500).send({ message: "Internal Server Error" });
   }
 };
 
-
-
-
-
-module.exports = {createGame}
-
+module.exports = { createGame };
