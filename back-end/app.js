@@ -6,11 +6,16 @@ const passport = require("passport");
 const initializePassport = require("./config/passport");
 const { sequelize } = require("./models");
 const router = require("./routes/index");
-const socketIo = require("socket.io")
-const http = require("http")
-const handleLiveGame = require("./services/liveGame")
+const socketIo = require("socket.io");
+const http = require("http");
+const redis = require('redis');
+const handleLiveGame = require("./services/liveGame");
+
 const app = express();
-const server = http.createServer(app)
+const server = http.createServer(app);
+
+const client = redis.createClient();
+
 const io = socketIo(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -18,27 +23,51 @@ const io = socketIo(server, {
   }
 });
 
-initializePassport(passport);
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-app.use(session({
-  secret: "5d65dx7456x7",
-  resave: false,
-  saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use("/api/v1", router);
-handleLiveGame(io)
-
-sequelize.sync().then(() => {
-  server.listen(PORT, () => {
-    console.log(`Server is listening to port ${PORT}`);
-  });
-}).catch(err => {
-  console.error('Error syncing database:', err);
+client.on('error', (err) => {
+  console.error('Redis error:', err);
 });
+
+client.on('connect', () => {
+  console.log('Redis client connected');
+});
+
+client.on('ready', () => {
+  console.log('Redis client ready');
+  initializeApp();
+});
+
+function initializeApp() {
+  initializePassport(passport);
+
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+
+  app.use(session({
+    secret: "5d65dx7456x7",
+    resave: false,
+    saveUninitialized: false
+  }));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  app.use("/api/v1", router);
+
+  handleLiveGame(io, client);
+
+  sequelize.sync().then(() => {
+    server.listen(PORT, () => {
+      console.log(`Server is listening to port ${PORT}`);
+    });
+  }).catch(err => {
+    console.error('Error syncing database:', err);
+  });
+
+  process.on('SIGINT', async () => {
+    console.log('Closing Redis client...');
+    await client.quit();
+    process.exit();
+  });
+}
+
+client.connect(); // Make sure to connect the client explicitly

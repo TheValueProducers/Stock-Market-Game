@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-          model: 'Users',
+          model: 'User',
           key: 'user_id',
         },
       },
@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       share_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
-          model: 'Shares',
+          model: 'Share',
           key: 'share_id',
         },
       },
@@ -38,13 +38,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-          model: 'Games',
+          model: 'Game',
           key: 'game_id',
         },
       },
     }, {
       timestamps: false,
-    });
+      tableName: "Transaction"
+    },
+  );
   
     Transaction.associate = (models) => {
       Transaction.belongsTo(models.User, { foreignKey: 'user_id' });

@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-          model: 'Games',
+          model: 'Game',
           key: 'game_id',
         },
       },
@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       
     }, {
       timestamps: false,
+      tableName: "Player"
     });
   
     Player.associate = (models) => {

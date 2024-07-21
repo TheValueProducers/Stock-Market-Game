@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     }, {
       timestamps: false,
+      tableName: "Portfolio"
     });
   
     Portfolio.associate = (models) => {

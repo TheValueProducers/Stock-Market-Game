@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       share_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
           model: 'Shares',
@@ -32,10 +32,16 @@ module.exports = (sequelize, DataTypes) => {
       },
     }, {
       timestamps: false,
-      tableName: 'PortfolioItems',
+      tableName: 'PortfolioItem',
     });
   
     PortfolioItem.associate = (models) => {
+      PortfolioItem.belongsToMany(models.Share, {
+        through: 'SharePortfolioItems',
+        foreignKey: "portfolio_item_id",
+        otherKey: "share_id",
+        as: "shares"
+      })
       PortfolioItem.belongsTo(models.Portfolio, { foreignKey: 'portfolio_id' });
       PortfolioItem.belongsTo(models.Share, { foreignKey: 'share_id' });
     };
