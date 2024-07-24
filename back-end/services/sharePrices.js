@@ -9,16 +9,15 @@ const randomStockChange = async (client, difficulty, gameDuration = 10, updateCa
           model: Share,
           as: 'shares'
         }
-      ],
-      order: sequelize.random()
-    });
+      ]
+    }); //TESTING ONLY
 
     const stocks = scenarios.map(scenario => {
       console.log("Scenario:", scenario);
       return {
         name: scenario.shares[0]?.share_id,
         initialValue: scenario.shares[0]?.price || 0,
-        description: scenario.description,
+        scenario: scenario.description,
         changeRate: scenario.percentage_change
       };
     });
@@ -46,17 +45,19 @@ const randomStockChange = async (client, difficulty, gameDuration = 10, updateCa
     }
 
     let currentTime = 0;
+    
+    let currentScenario = null;
     let intervalId = setInterval(async () => {
       currentTime++;
       const updatedStocks = [];
 
       for (const [index, stock] of stocks.entries()) {
         let currentValue = stock.initialValue;
-        const percentageChange = (Math.random() * (dailyChange * 2)) - dailyChange;
+        const percentageChange = (Math.random() * (dailyChange * 2)) - dailyChange; 
 
         if (specifiedChangeTimes[index] === currentTime) {
           currentValue += currentValue * (stock.changeRate / 100);
-          console.log(`The ${stock.name} stock has changed for ${stock.changeRate}% because of ${stock.description}`);
+          console.log(`The ${stock.name} stock has changed for ${stock.changeRate}% because of ${stock.scenario}`);
         }
 
         currentValue += currentValue * (percentageChange / 100);
@@ -64,10 +65,10 @@ const randomStockChange = async (client, difficulty, gameDuration = 10, updateCa
 
         await client.set(`stock_${stock.name}`, currentValue);
 
-        updatedStocks.push({ name: stock.name, newPrice: currentValue });
+        updatedStocks.push({ name: stock.name, newPrice: currentValue, scenario: stock.scenario });
       }
 
-      if (updateCallback) updateCallback(updatedStocks);
+      if (updateCallback && updatedStocks.length === stocks.length) updateCallback(updatedStocks, currentScenario);
     }, 1000);
 
     setTimeout(() => {
@@ -86,7 +87,7 @@ const randomBondChange = async (client, difficulty, gameDuration = 30, updateCal
     const bonds = scenarios.map(scenario => ({
       name: scenario.shares[0]?.share_id,
       initialValue: scenario.shares[0]?.price || 0,
-      description: scenario.description,
+      scenario: scenario.description,
       changeRate: scenario.percentage_change
     }));
 
@@ -113,6 +114,7 @@ const randomBondChange = async (client, difficulty, gameDuration = 30, updateCal
     }
 
     let currentTime = 0;
+    let currentScenario = null;
     let intervalId = setInterval(async () => {
       currentTime++;
       const updatedBonds = [];
@@ -133,7 +135,7 @@ const randomBondChange = async (client, difficulty, gameDuration = 30, updateCal
         updatedBonds.push({ name: bond.name, newPrice: currentValue });
       }
 
-      if (updateCallback) updateCallback(updatedBonds);
+      if (updateCallback && updatedStocks.length === stocks.length) updateCallback(updatedStocks, currentScenario);
     }, 1000);
 
     setTimeout(() => {

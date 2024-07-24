@@ -23,9 +23,9 @@ const handleSocketConnection = (io, client) => {
         const difficulty = game.difficulty;
         console.log(`I am REACHED 0, Difficulty: ${difficulty}`);
         
-        randomStockChange(client, difficulty, 10, (stock, value) => {
-          console.log(`I am REACHED 1, Stock: ${stock}, New Price: ${value}`);
-          io.to(room).emit("stock price", { stock, newPrice: value });
+        randomStockChange(client, difficulty, 10, (stocks) => {
+          console.log(stocks);
+          io.to(room).emit("stock price", stocks );
         });
       } catch (err) {
         console.error(err);
