@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/gameplayPage.css">
+    <title>BVIS SMG | In Game</title>
+</head>
+<body>
+
+    <header>
+        <!-- name of user goes here -->
+        <p id="username-display">Vuong Binh</p>
+
+    </header>
+
+    <main>
+        <section class="user-card-container">
+
+            <div class="user-card">
+                
+                <img class="bvis-sm-icon" src="../bvis-sm-icon.png" alt="logo">
+
+                <div id="user-info">
+                    <p>Time elapsed: <span id="time-elapsed" >2 years</span></p>
+                    <p>Total cash: <span id="net-cash">120($)</span></p>
+                    <p>Net worth: <span id="net-worth">1,200,000($)</span></p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="sm-main-container">
+            <!-- sm stands for stock market btw -->
+
+            <div class="sm-menu-container">
+
+                <form id="sm-menu" action="">
+                    <button id="user-stock-market">Market</button>
+                    <button id="user-portfolio">My Portfolio</button>
+
+                    <select name="share-type" id="share-type">
+                        <option value="" class="share-type-label"  disabled selected>Share Type <span class="type-label-arrow">↓</span></option>
+                        <option value="all">All</option>
+                        <option value="stocks">Stocks</option>
+                        <option value="bonds">Bonds</option>
+                    </select>
+                  
+
+                    <select name="sector-type" id="sector-type">
+                        <option value="" class="sector-type-label" disabled selected>Sector Type <span class="type-label-arrow">↓</span></option>
+                        <option value="all">All</option>
+                        <option value="energy">Energy</option>
+                        <option value="materials">Materials</option>
+                        <option value="industrial">Industrials</option>
+                        <option value="consumer-discredtionary">Consumer Discretionary</option>
+                        <option value="consumer-staples">Consumer Staples</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="financials">Financials</option>
+                        <option value="IT">IT</option>
+                        <option value="communication-services">Communication Services</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="real-estate">Real Estate</option>
+
+                        
+                    </select>
+                    
+
+
+                </form>
+            </div>
+
+            <div class="sm-table-container">
+                <div class="sm-code-input-container">
+                    <form action="" id="sm-code-input">
+                        <input type="text" placeholder="Enter Code">
+                        <!-- add script that takes input when user press  -->
+                    </form>
+
+                </div>
+   
+
+                <table id="sm-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Company Code</th>
+                            <th>Current Price($)</th>
+                            <th>Previous Day Price Change(%)</th>
+                            <th>Share Type</th>
+                            <th>Sector</th>
+                            <th>Info</th>
+                            <th>Graph</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="order">1</td>
+                            <td class="company-code">Appl</td>
+                            <td class="current-price">12.3</td>
+                            <td class="prev-price-change">-21</td>
+                            <td class="share-type">Stock</td>
+                            <td class="company-sector">IT</td>
+                            <td class="company-info"><a href="#">More Info</a></td>
+                            <td class="compnay-graph"><a href="#">Live Chart</a></td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="order">2</td>
+                            <td class="company-code">Appl</td>
+                            <td class="current-price">12.3</td>
+                            <td class="prev-price-change">-21</td>
+                            <td class="share-type">Stock</td>
+                            <td class="company-sector">IT</td>
+                            <td class="company-info"><a href="#">More Info</a></td>
+                            <td class="compnay-graph"><a href="#">Live Chart</a></td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td class="order">3</td>
+                            <td class="company-code">Appl</td>
+                            <td class="current-price">12.3</td>
+                            <td class="prev-price-change">-21</td>
+                            <td class="share-type">Stock</td>
+                            <td class="company-sector">IT</td>
+                            <td class="company-info"><a href="#">More Info</a></td>
+                            <td class="compnay-graph"><a href="#">Live Chart</a></td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="order">4</td>
+                            <td class="company-code">Appl</td>
+                            <td class="current-price">12.3</td>
+                            <td class="prev-price-change">-21</td>
+                            <td class="share-type">Stock</td>
+                            <td class="company-sector">IT</td>
+                            <td class="company-info"><a href="#">More Info</a></td>
+                            <td class="compnay-graph"><a href="#">Live Chart</a></td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="order">5</td>
+                            <td class="company-code">Appl</td>
+                            <td class="current-price">12.3</td>
+                            <td class="prev-price-change">-21</td>
+                            <td class="share-type">Stock</td>
+                            <td class="company-sector">IT</td>
+                            <td class="company-info"><a href="#">More Info</a></td>
+                            <td class="compnay-graph"><a href="#">Live Chart</a></td>
+
+                        </tr>
+
+                      
+
+                     
+                    </tbody>
+
+                </table>
+            </div>
+
+
+
+        </section>
+
+
+    </main>
+
+    
+    <footer>
+        <!-- game id goes here -->
+        <p id="game-id-display">Game ID: 09123920</p>
+
+    </footer>
+
+
+    
+</body>
+</html>
