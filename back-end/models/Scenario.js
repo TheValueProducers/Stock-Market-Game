@@ -17,9 +17,17 @@ module.exports = (sequelize, DataTypes) => {
         isIn: [['IGCSE', 'AS-Level', 'A-Level']],
       },
     },
-    percentage_change: {
+    percentage_change_on_stock: {
       type: DataTypes.FLOAT,
       allowNull: false,
+    },
+    percentage_change_on_bond: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    duration: {
+      type: DataTypes.FLOAT,
+      allowNull: false
     },
     created_at: {
       type: DataTypes.DATE,
@@ -39,8 +47,9 @@ module.exports = (sequelize, DataTypes) => {
       through: 'ScenarioShares',
       foreignKey: 'scenario_id',
       otherKey: 'share_id',
-      as: 'shares' // Use 'shares' as alias
+      as: 'shares' 
     });
+    Scenario.belongsTo(models.Gameplay, { foreignKey: 'gameplay_id', as: 'gameplay' });
   };
 
   return Scenario;

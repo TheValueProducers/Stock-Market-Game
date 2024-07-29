@@ -1,36 +1,27 @@
 'use strict';
-
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Game', {
       game_id: {
         type: Sequelize.UUID,
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4
       },
       game_code: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
+      },
+      host: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       difficulty: {
         type: Sequelize.STRING,
         allowNull: false,
-        validate: {
-          isIn: [["IGCSE", "AS-Level", "A-Level"]] 
-        }
       },
       time_duration: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: {
-          isIn: [["10", "15", "30"]] 
-        }
-      },
-      host: {
-        type: Sequelize.STRING,
         allowNull: false,
       },
       status: {
@@ -39,6 +30,7 @@ module.exports = {
       },
       created_at: {
         type: Sequelize.DATE,
+        allowNull: false,
         defaultValue: Sequelize.NOW,
       },
       end_at: {
