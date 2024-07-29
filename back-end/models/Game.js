@@ -47,6 +47,9 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
       tableName: "Game"
     });
+    Game.associate = function(models) {
+      Game.hasOne(models.GamePlay, { foreignKey: 'game_id' });
+    };
   
     return Game;
   };
