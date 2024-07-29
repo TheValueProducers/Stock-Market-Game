@@ -4,9 +4,10 @@ const getScenariosFromGameId = async (game_id) => {
         where: {
             game_id
         },
-        include: {
-            
-        }
+        include: [{
+            model: Gameplay,
+            as: "gameplay"
+        }]
     })
 
 }
