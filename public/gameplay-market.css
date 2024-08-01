@@ -24,6 +24,8 @@ body{
 
 }
 
+
+
 header{
     width: 100%;
     height: 6vh;
@@ -399,6 +401,33 @@ footer{
     font-weight: 500;
     color: var(--font-outliner-color);
 
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.884); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it appears above other elements */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-text {
+    width: 15ch;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Show overlay on screens smaller than 768px */
+@media (max-width: 767px) {
+    .overlay {
+        display: flex;
+    }
 }
 
 
