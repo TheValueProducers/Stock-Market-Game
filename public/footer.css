@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Playfair', sans-serif;
+}
+
+:root {
+    --bg1-color: #1D2028;
+    --bg2-color: #2CF3B6;
+    --bg3-color: #fff;
+    --t1-color: #fff;
+    --t2-color: #2CF3B6;
+}
+
+
+footer {
+    position: relative;
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 240px;
+    background-color:var(--bg1-color);
+}
+
+p {
+    text-align: center;
+    color: var(--t1-color);
+    font-weight: 700;
+    font-size: 40px;
+}
+
+p .link {
+    color: var(--t1-color);
+    text-decoration: underline;
+}
+
