@@ -1,4 +1,5 @@
 const { randomBondChange, randomStockChange } = require("./sharePrices");
+const {lookForGames} = require("./lookForGame")
 const { Game } = require("../models");
 
 const handleSocketConnection = (io, client) => {
@@ -37,5 +38,14 @@ const handleSocketConnection = (io, client) => {
     });
   });
 };
+
+
+const stockChanges = async (game_id, client) => {
+    let scenarios = await client.get("scenarios").then(data => JSON.stringify(data))
+    if (!scenarios){
+      scenarios = await lookForGames(game_id)
+      await client.set("scenarios", scenarios)
+    }
+}  
 
 module.exports = handleSocketConnection;
