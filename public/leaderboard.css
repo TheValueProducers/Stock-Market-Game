@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --t1-color: #fff;
+    --t2-color: #2CF3B6;
+    --op-color: #d2503f;
+    --bg1-color: #1D2028;
+    --bg2-color: #2CF3B6;
+    --bg3-color: #fff;
+    --bgh-color: #252E44;
+    --bgh2-color: #283C6B;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Inter", sans-serif;
+}
+
+/**/
+html,
+body {
+    overflow: auto;
+    font-size: 100%;
+    background-color: var(--bg1-color);
+}
+
+.bg {
+    position: relative;
+    object-fit: cover;
+    opacity: 0.07;
+    height: 98vh;
+    width: 100%;
+    z-index: 1;
+}
+
+section {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    height: 70%;
+    width: 70%;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--t1-color);
+    background: var(--bgh-color);
+    width: 100%;
+    height: 10%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.number {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    right: 40%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2%;
+    width: 100%;
+    height: 90%;
+    background: var(--bg1-color);
+}
+
+.player {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    width: 90%;
+    height: 30%;
+    margin-bottom: 10px;
+    background: var(--bgh2-color);
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    padding-left: 5%;
+    color: var(--t1-color);
+    background: var(--bg2-color);
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.profit {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    height: 100%;
+    padding-right: 4%;
+    color: var(--t1-color);
+}
