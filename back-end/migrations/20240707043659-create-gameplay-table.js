@@ -1,25 +1,27 @@
-'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Gameplay', {
-      gameplay_id: {
+      game_play_id: {
         type: Sequelize.UUID,
-        allowNull: false,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4
       },
-      description: {
+      period_name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        unique: true
       },
-      created_at: {
+      start_event_date: {
         type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW,
+        allowNull: false
       },
+      end_event_date: {
+        type: Sequelize.DATE,
+        allowNull: false
+      }
     });
   },
+
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Gameplay');
-  },
+  }
 };

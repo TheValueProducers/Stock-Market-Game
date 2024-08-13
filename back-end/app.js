@@ -1,41 +1,23 @@
 require("dotenv").config();
-const PORT = process.env.PORT || 3001;
 const express = require('express');
 const session = require("express-session");
 const passport = require("passport");
 const initializePassport = require("./config/passport");
 const { sequelize } = require("./models");
 const router = require("./routes/index");
-const socketIo = require("socket.io");
 const http = require("http");
-const redis = require('redis');
-const handleLiveGame = require("./services/liveGame");
+const redisClient = require('./config/redisClient');
+const initializeSocketIo = require('./config/socketIo'); // Import the Socket.IO configuration
+
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 const server = http.createServer(app);
 
-const client = redis.createClient();
+// Initialize Socket.IO
+const io = initializeSocketIo(server); // Call the function to initialize Socket.IO
 
-const io = socketIo(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE"]
-  }
-});
-
-client.on('error', (err) => {
-  console.error('Redis error:', err);
-});
-
-client.on('connect', () => {
-  console.log('Redis client connected');
-});
-
-client.on('ready', () => {
-  console.log('Redis client ready');
-  initializeApp();
-});
-
+// Function to initialize and start the application
 function initializeApp() {
   initializePassport(passport);
 
@@ -53,21 +35,25 @@ function initializeApp() {
 
   app.use("/api/v1", router);
 
-  handleLiveGame(io, client);
-
   sequelize.sync().then(() => {
     server.listen(PORT, () => {
-      console.log(`Server is listening to port ${PORT}`);
+      console.log(`Server is listening on port ${PORT}`);
     });
   }).catch(err => {
     console.error('Error syncing database:', err);
   });
 
+  // Graceful shutdown
   process.on('SIGINT', async () => {
     console.log('Closing Redis client...');
-    await client.quit();
+    await redisClient.quit();
     process.exit();
   });
 }
 
-client.connect(); // Make sure to connect the client explicitly
+// Connect to Redis and start the application
+redisClient.connect().then(() => {
+  initializeApp();
+}).catch(err => {
+  console.error('Failed to connect to Redis:', err);
+});

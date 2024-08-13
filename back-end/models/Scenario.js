@@ -1,55 +1,33 @@
+const { UUIDV4 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const Scenario = sequelize.define('Scenario', {
     scenario_id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+      defaultValue: UUIDV4
+    },
+    game_play_id: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'Gameplay',
+        key: 'game_play_id'
+      }
     },
     description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    difficulty: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isIn: [['IGCSE', 'AS-Level', 'A-Level']],
-      },
-    },
-    percentage_change_on_stock: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    percentage_change_on_bond: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    duration: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.TEXT,
       allowNull: false
     },
-    created_at: {
+    event_date: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
+      allowNull: false
+    }
   }, {
     timestamps: false,
     tableName: "Scenario"
   });
 
   Scenario.associate = (models) => {
-    Scenario.belongsToMany(models.Share, {
-      through: 'ScenarioShares',
-      foreignKey: 'scenario_id',
-      otherKey: 'share_id',
-      as: 'shares' 
-    });
-    Scenario.belongsTo(models.Gameplay, { foreignKey: 'gameplay_id', as: 'gameplay' });
+    Scenario.belongsTo(models.Gameplay, { foreignKey: 'game_play_id' });
   };
 
   return Scenario;

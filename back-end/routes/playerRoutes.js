@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const {authenticatePlayer} = require("../controllers/playerController")
+const {authenticatePlayer, clearPlayer} = require("../controllers/playerController")
 
 router.post("/authenticate", authenticatePlayer)
+router.delete("/finish-game", clearPlayer)
 
 module.exports = router
 
