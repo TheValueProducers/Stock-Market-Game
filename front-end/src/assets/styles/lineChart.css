@@ -12,7 +12,7 @@
 
 .graph-container{
     width: 80vw;
-    height: 60vh;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,6 +30,44 @@ header{
     height: 20vh;
 }
 
+.top-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+}
+.stock-action{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 25vh;
+    width: 35vw;
+    background-color: white;
+}
+
+.action{
+    margin-bottom: 2vh;
+}
+.company-info h2,.company-info p{
+    margin: 0;
+}
+
+.price{
+    margin: 0;
+}
+.quantity{
+    margin: 0;
+}
+
+
+.choose-quantity{
+    height: 2rem;
+    width: 5rem;
+    font-size: 1.5rem;
+}
+
 section.content{
     width: 100vw;
     height: 100vh;
@@ -41,7 +79,7 @@ section.content{
 
 
 .info{
-    width: 40%;
+    width: 40vw;
     padding: 1.5vh 1vw;
     height: 15vh;
     margin-right: 40%;
