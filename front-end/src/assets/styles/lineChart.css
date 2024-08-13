@@ -30,42 +30,89 @@ header{
     height: 20vh;
 }
 
+.content{
+    height: 100vh;
+    padding: 0 0 20vh 0;
+}
+
 .top-section{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 80vw;
+    height: 40vh;
 }
 .stock-action{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    height: 25vh;
+    height: 30vh;
     width: 35vw;
     background-color: white;
+    border-radius: 1rem;
+    padding: 1vh 1vw;
+    
 }
 
+
+.top-section-action{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .action{
     margin-bottom: 2vh;
 }
 .company-info h2,.company-info p{
     margin: 0;
 }
+.company-info p{
+    color: rgb(92, 92, 92);
+}
+
+.logo{
+    height: 9vh;
+    width: 4vw;
+    margin-right: 2vw;
+    
+}
 
 .price{
     margin: 0;
+    font-size: 1rem;
 }
 .quantity{
     margin: 0;
+    font-size: 1rem;
 }
+
 
 
 .choose-quantity{
     height: 2rem;
     width: 5rem;
     font-size: 1.5rem;
+}
+.buy{
+    background-color: rgb(5, 198, 5);
+    color: white;
+    border: none;
+    height: 3.5vh;
+    width: 3vw;
+    border-radius: 0.1rem;
+    cursor: pointer;
+}
+
+.sell{
+    color: white;
+    background-color: red;
+    border: none;
+    height: 3.5vh;
+    width: 3vw;
+    border-radius: 0.1rem;
+    cursor: pointer;
 }
 
 section.content{

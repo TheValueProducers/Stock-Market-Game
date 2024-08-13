@@ -49,8 +49,8 @@ const FinancialChartPanes = () => {
                   </div>
               </div>
               <div className='stock-action'>
-                <div>
-                  <img />
+                <div className='top-section-action'>
+                  <img className='logo' src = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/625px-Apple_logo_black.svg.png" />
                   <div className='company-info'>
                     <h2>Apple Inc. (APPL)</h2>
                     <p>0 shares</p>
