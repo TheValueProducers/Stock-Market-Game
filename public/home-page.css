@@ -21,6 +21,7 @@
 
 
 body{
+    width: 100%;
     background-color: var(--bg1-color);
     display: flex;
     flex-direction: column;
