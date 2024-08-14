@@ -5,79 +5,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
+    <link rel="stylesheet" href="../public/navbar.css">
     <link rel="stylesheet" href="../public/home-page.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
 <body>
-    <!---->
-    <nav class="navbar">
-        <a href="#" class="logo"></a>
-        <ul class="nav-links">
-            <div><a href="#page-1"><i id="home" class='bx bx-home-alt'></i></a></div>
-            <div class="dropdown">
-                <a class="dropbtn">Join a Game</a>
-                <i id="arrow-down" class='bx bx-chevron-down'></i>
-                <ul class="dropdown-content" id="dc-1">
-                    <a href="#">Signleplayer</a>
-                    <a class="box2" href="#">Multiplayer</a>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <a href="#page-2" class="dropbtn">About the SMG</a>
-                <i id="arrow-down" class='bx bx-chevron-down'></i>
-                <ul class="dropdown-content" id="dc-2">
-                    <a href="#page-3">How the Stocks Market Works</a>
-                    <a class="box2" href="#page-4">How to Play the Game</a>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <a class="dropbtn">About Us</a>
-                <i id="arrow-down" class='bx bx-chevron-down'></i>
-                <ul class="dropdown-content" id="dc-3">
-                    <a href="#page-5">Our Goals</a>
-                    <a class="box2" href="#page-6">Our members</a>
-                </ul>
-            </div>
-        </ul>
-        <div class="login"><i class='bx bx-user-circle'></i></div>
+
+    <nav class="navbar-container">
+
+        <div class="navbar">
+
+            <img class="logo" src="../assets/images/home-page/bvis-sm-icon.png" alt="">
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        Join a Game
+                        <i class='bx bx-chevron-down'></i>
+                    </button>
+    
+                    <div class="dropdown-content" id="dropdown-content-1">
+                        <a href="#">Singleplayer</a>
+                        <a href="#">Multiplayer</a>
+                    </div>
+                </li>
+    
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        About the SGM
+                        <i class='bx bx-chevron-down'></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdown-content-2">
+                        <a href="#">How the Stocks Market Works</a>
+                        <a href="#">How to Play the Game</a>
+                    </div>
+                </li>
+    
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        About Us
+                        <i class='bx bx-chevron-down'></i>
+                    </button>
+    
+                    <div class="dropdown-content" id="dropdown-content-3">
+                        <a href="#">Our missions</a>
+                        <a href="#">Our members</a>
+                    </div>
+                </li>
+            </ul>
+            
+                <i  class='bx bx-user-circle login'></i>
+
+        </div>
+     
+
     </nav>
     
-    <section>
-        <div class="page-1" id="page-1">
+    <main>
+
+        <section class="page-1" id="page-1">
             <div class="container-1">
-                <h1>Stock <span>Market</span> Game is the Best Game to <span>Invest</span> your Time</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    etdolore magna aliqua.
-                </p>
-                <h4>Learn more <i class='bx bx-link-external'></i></h4>
+                <div>
+                    <h1>Stock <span>Market</span> Game is the Best Game to <span>Invest</span> your Time</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                        etdolore magna aliqua.
+                    </p>
+                    <h4>Learn more <i class='bx bx-link-external'></i></h4>
+
+                </div>
             </div>
             <img src="../assets/images/home-page/img-1.png" class="bg-1">
-        </div>
-        <div class="page-2" id="page-2">
+        </section>
+
+
+        <section class="page-2" id="page-2">
             <div class="container-2">
-                <h1>About the <span>Stock Market Game</span></h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                    <br>
-                    <br>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                    anim id est laborum.
-                    <br>
-                    <br>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                </p>
+                <div>
+                    <h1>About the <span>Stock Market Game</span></h1>
+
+                    <div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat.
+    
+                        </p>
+                        <p>
+    
+    
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                            anim id est laborum.
+    
+                        </p>
+    
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                            anim id est laborum.
+                        </p>
+    
+                        <p>
+    
+                
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+    
+                        </p>
+
+                    </div>
+
+                </div>
+            
             </div>
             <img src="../assets/images/home-page/img-2.jpg" class="bg-2">
-        </div>
-        <div class="page-3" id="page-3">
+        </section>
+
+   
+
+        <section class="page-3" id="page-3">
             <div class="container-3">
                 <h1>How the Stock Market Game <span>Works</span></h1>
                 <div class="slider">
@@ -103,8 +156,11 @@
                 </p>
             </div>
             <img src="../assets/images/home-page/img-3.jpg" class="bg-3">
-        </div>
-        <div class="page-4" id="page-4">
+        </section>
+
+              <!--
+
+        <section class="page-4" id="page-4">
             <div class="container-4">
                 <h1><span>Tutorial</span></h1>
                 <p>
@@ -121,8 +177,10 @@
                 </div>
             </div>
             <img src="../assets/images/home-page/img-4.jpg" class="bg-4">
-        </div>
-        <div class="page-5" id="page-5">
+        </section>
+
+
+        <section class="page-5" id="page-5">
             <div class="container-5">
                 <div class="content-1">
                     <p class="title">Who are we?</p>
@@ -171,8 +229,10 @@
                 </div>
             </div>
             <img src="../assets/images/home-page/img-5.jpg" class="bg-5">
-        </div>
-        <div class="page-6" id="page-6">
+        </section>
+
+
+        <section class="page-6" id="page-6">
             <div class="container-6">
                 <div class="member">
                     <p>Meet Our</p>
@@ -206,8 +266,8 @@
                 </div>
             </div>
             <img src="../assets/images/home-page/img-7.jpg" class="bg-6">
-        </div>
-    </section>
+        </section> -->
+    </main>
 
 </body>
 
