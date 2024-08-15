@@ -19,6 +19,8 @@
 
         .navbar-container{
             width: 100%;
+            top: 0;
+            left: 0;
             height: auto;
 
             position: fixed;
@@ -29,6 +31,8 @@
 
             background-color: var(--bg1-color);
             z-index: 1000;
+
+
     
 
 
@@ -93,8 +97,6 @@
 
         .navbar ul li .dropdown-content {
             width: 100%;
-            
-
             display: none;
             position: absolute;
             z-index: 1;
@@ -147,7 +149,8 @@
         @media (min-width: 768px) and (max-width: 1024px) {
             .navbar {
                 padding: 0 1.5rem 0 1.2rem;
-                max-height: 80px;
+                height: 75px;
+                max-height: 75px;
             }
         
             .navbar ul {
@@ -180,7 +183,8 @@
         @media (min-width: 1025px) and (max-width: 1440px) {
             .navbar {
                 padding: 0 1.5rem 0 1.2rem;
-                max-height: 80px;
+                height: 85px;
+                max-height: 85px;
 
             }
         
@@ -216,7 +220,8 @@
             .navbar {
                 padding: 0 1.5rem 0 1.2rem;
                 max-width: 1500px;
-                max-height: 100px;
+                height: 110px;
+                max-height: 110px;
             }
         
             .navbar ul {
@@ -252,7 +257,8 @@
             .navbar {
                 padding: 0 1.5rem 0 1.2rem;
                 max-width: 1500px;
-                max-height: 120px;
+                height: 110px;
+                max-height: 110px;
             }
         
             .navbar ul {
