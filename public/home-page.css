@@ -559,183 +559,147 @@ body {
 }
 
 .goal {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-}
 
-.goal > div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-    width: 30%;
-    min-width: 250px;
-    box-sizing: border-box;
-}
 
-.goal [class*="icon-"] {
-    height: 120px;
-    width: 120px;
-    margin-right: 20px;
-    border-radius: 50%;
-    background-color: var(--bg2-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--bg1-color);
     
 }
 
-.goal [class*="goal-"] p {
-    flex: 1;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--t1-color);
-}
 
-/* .container-5 {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.content-1 {
-    position: relative;
+.goal div {
     display: flex;
     flex-direction: column;
-    width: 20%;
-    left: 5%;
-}
-
-.content-1 .title {
-    width: fit-content;
-    font-size: 25px;
-    padding-right: 10px;
-    border-bottom: dashed 4px var(--bg2-color);
-}
-
-.content-1 h1 {
-    font-size: 50px;
-    font-weight: 700;
-    width: 300px;
-    padding-top: 30px;
-    color: var(--t2-color);
-}
-
-.content-1 #text {
-    margin-top: 20px;
-    width: 500px;
-}
-
-.content-2 {
-    position: relative;
-    right: 5%;
-}
-
-.content-2 [class*="img-"] {
-    position: relative;
-    margin-right: 5px;
-    height: 263px;
-    width: 183px;
-    object-fit: cover;
-}
-
-.img-2 {
-    top: 90px;
-}
-
-.content-3 {
-    position: relative;
-    width: 90vw;
-    left: 5%;
-    margin-bottom: 3%;
-}
-
-.content-3 .title {
-    position: relative;
-    width: fit-content;
-    font-size: 25px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-    border-bottom: dashed 4px var(--bg2-color);
-}
-
-.goal {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    height: 300px;
-} */
-
-[class*="icon-"] {
-    font-size: 2.5rem;
-
-    padding: 20px;
-    margin: 15px 0;
-    color: var(--bg1-color);
-    background: var(--bg2-color);
+    align-items: center;
+    width: 30%;
 
 
 }
+
 
 [class*="goal-"] p {
-    width: 50px;
-    font-size: 0.9rem;
+    width: 30ch;
+
+    line-height: 1.6;
+    color: var(--t1-color);
+
+    font-size: 1.5rem;
     font-weight: 200;
-    text-align: left;
+
 }
 
+
+.goal [class*="icon-"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    height: 140px;
+    width: 140px;
+
+
+    margin-right: 20px;
+    border-radius: 50%;
+
+
+    padding: 1.2rem;
+    margin: 1rem 0;
+
+
+    
+    background-color: var(--bg2-color);
+    
+}
+
+
+.goal [class*="icon-"] i{
+    font-size: 4.5rem;
+    color: var(--bg1-color);
+}
+
+
+
+/* page 6 */
+.page-6 {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: 
+        linear-gradient(var(--bg1-color-opacity), var(--bg1-color-opacity)), 
+        url('../assets/images/home-page/img-7.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: var(--t1-color);
+    overflow: hidden;
+    padding: 3rem 2rem;
+}
 
 .container-6 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    bottom: 150px;
+    width: 100%;
 }
 
-
 .member {
-    position: relative;
     display: flex;
-    margin-bottom: 50px;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 3rem;
+}
+
+.member p {
+    font-size: 1.5rem;
+    color: var(--t1-color);
+}
+
+.member h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--t2-color);
 }
 
 .profile {
-    position: relative;
     display: grid;
-    grid-template-columns: auto auto auto;
-    margin-bottom: 20px;
-    column-gap: 100px;
-    row-gap: 50px;
-    justify-content: space-between;
-    height: 300px;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 
 .in4 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .face {
-    position: relative;
-    align-items: center;
     height: 200px;
     width: 200px;
     padding: 20px;
-    margin: 15px 0;
+    margin-bottom: 1rem;
     border-radius: 20px;
-    color: var(--bg1-color);
-    background: var(--bg2-color);
+    background-color: var(--bg2-color);
+    object-fit: cover;
 }
 
 .in4 p {
-    font-size: large;
-    text-align: center;
-    width: 50%;
+    font-size: 1rem;
+    width: 80%;
+    color: var(--t1-color);
 }
+
