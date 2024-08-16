@@ -1,6 +1,6 @@
 import {StockProvider} from "./context/stockContext"
 import './App.css';
-import LineChart from './pages/lineChart';
+import LineChart from './pages/LineChart';
 import LogIn from "./pages/LogIn"
 import {Routes, Route} from 'react-router-dom';
 
