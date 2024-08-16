@@ -1,11 +1,12 @@
 import "../assets/styles/logIn.css";
 import NavBar from "../assets/components/navBar"
+import BearImage from "../assets/images/bear_image.png";
 const LogIn = () => {
     return (
         <>
         <NavBar />
         <section>
-            <img src="../assets/images/sign-in/Screenshot 2024-07-10 222622.png" className="bear-image" alt="Sign in illustration" />
+            <img src={BearImage} className="bear-image" alt="Sign in illustration" />
             <div className="form-login">
                 <h1>Log In</h1>
                 <input type="text" name="username" placeholder="    Username" id="username" className="input-text" />
