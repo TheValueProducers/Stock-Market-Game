@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   text-decoration: none;
+   outline: none;
+   scroll-behavior: smooth;
+   font-family: 'Inter', sans-serif;
+}
+
+
+:root {
+   --bg1-color: #1D2028;
+   --bg2-color: #2CF3B6;
+   --bg3-color: #fff;
+   --t1-color: #fff;
+   --t2-color: #2CF3B6;
+}
+
+
+.navbar-container {
+   width: 100%;
+   top: 0;
+   left: 0;
+   height: auto;
+   position: fixed;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--bg1-color);
+   z-index: 1000;
+}
+
+
+.navbar {
+   width: 100%;
+   position: sticky;
+   padding: 0 1.2rem 0 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-color: var(--bg1-color);
+   z-index: 100;
+}
+
+
+.logo {
+   border-radius: 50px;
+   height: 80px;
+   width: 80px;
+}
+
+
+.navbar ul.navbar-menu {
+   width: 80%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   list-style: none;
+   transition: all 0.3s ease;
+}
+
+
+.navbar ul li {
+   position: relative;
+}
+
+
+.navbar ul li a,
+.navbar ul li .dropbtn {
+   color: var(--t1-color);
+   text-decoration: none;
+   padding: 1rem;
+   display: block;
+   background-color: var(--bg1-color);
+   border: none;
+   font-size: 1.5rem;
+   transition: color 0.3s ease;
+}
+
+
+.navbar ul li .dropbtn {
+   cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.navbar ul li .dropbtn i {
+   margin-left: 0.5rem;
+   font-size: 2.3rem;
+   color: var(--bg2-color);
+}
+
+
+.navbar ul li .dropdown-content {
+   width: 100%;
+   display: none;
+   position: absolute;
+   z-index: 1;
+   text-align: center;
+   background-color: var(--bg1-color);
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+   margin-left: -7px;
+}
+
+
+.navbar ul li:hover .dropdown-content {
+   display: block;
+}
+
+
+.navbar ul li .dropdown-content a {
+   color: var(--t1-color);
+   text-align: center;
+   padding: 1.5rem;
+   display: block;
+   transition: 0.3s ease;
+}
+
+
+.navbar ul li .dropdown-content a:hover {
+   background-color: var(--bg2-color);
+}
+
+
+.login {         
+   font-size: 4.5rem;
+   color: var(--bg2-color);
+}
+
+
+.menu-icon {
+   display: none;
+   cursor: pointer;
+   font-size: 2rem;
+   color: white;
+}
+
+
+/* Hide the .acc class by default */
+.acc {
+   display: none;
+}
+
+
+/* Smartphone Screen */
+@media (max-width: 768px) {
+   .navbar-container{
+       position: relative;
+   }
+
+
+   .menu-icon {
+       display: block;
+   }
+
+
+   .navbar ul.navbar-menu {
+       display: none;
+       flex-direction: column;
+       width: 100%;
+       background-color: var(--bg1-color);
+       position: absolute;
+       top: 100%;
+       left: 0;
+   }
+
+
+   .navbar ul.navbar-menu.active {
+       display: flex;
+   }
+
+
+   .navbar ul li {
+       width: 100%;
+       text-align: center;
+   }
+
+
+   .navbar ul li:first-child {
+       justify-content: flex-start;
+       text-align: left;
+   }
+
+
+   .navbar ul li .dropdown-content {
+       position: relative;
+       margin-left: 0;
+   }
+
+
+   .bx-user-circle {
+       display: none !important; /* Hide the login icon on small screens */
+   }
+
+
+   .acc {
+       display: block; /* Show the .acc class on small screens */
+       font-size: 1.5rem;
+       text-align: center;
+   }
+
+
+}
+
+
+/* Tablet Screen */
+@media (min-width: 768px) and (max-width: 1024px) {
+   .navbar {
+       padding: 0 1.5rem 0 1.2rem;
+       height: 78px;
+       max-height: 78px;
+   }
+
+
+   .navbar ul {
+       width: 75%;
+   }
+
+
+   .navbar ul li:first-child {
+       justify-content: flex-start;
+       text-align: left;
+   }
+
+
+   .navbar ul li a,
+   .navbar ul li .dropbtn {
+       font-size: 1.2rem;
+   }
+
+
+   .navbar ul li .dropbtn i {
+       font-size: 2rem;
+   }
+
+
+   .logo {
+       width: 100%;
+       height: auto;
+       max-width: 60px;
+       max-height: 60px;
+   }
+
+
+   .login {
+       font-size: 3rem;
+   }
+}
+
+
+/* Small Desktop Screen */
+@media (min-width: 1025px) and (max-width: 1440px) {
+   .navbar {
+       padding: 0 1.5rem 0 1.2rem;
+       height: 85px;
+       max-height: 85px;
+   }
+
+
+   .navbar ul {
+       width: 60%;
+   }
+
+
+   .navbar ul li:first-child {
+       justify-content: flex-start;
+       text-align: left;
+   }
+
+
+   .navbar ul li a,
+   .navbar ul li .dropbtn {
+       font-size: 1.3rem;
+   }
+
+
+   .navbar ul li .dropbtn i {
+       font-size: 2.2rem;
+   }
+
+
+   .logo {
+       width: 100%;
+       height: auto;
+       max-width: 68px;
+       max-height: 68px;
+   }
+
+
+   .login {
+       font-size: 3.5rem;
+   }
+}
+
+
+/* Large Desktop Screen */
+@media (min-width: 1441px) and (max-width: 2560px) {
+   .navbar {
+       padding: 0 1.5rem 0 1.2rem;
+       max-width: 1500px;
+       height: 110px;
+       max-height: 110px;
+   }
+
+
+   .navbar ul {
+       width: 75%;
+   }
+
+
+   .navbar ul li:first-child {
+       justify-content: flex-start;
+       text-align: left;
+   }
+
+
+   .navbar ul li a,
+   .navbar ul li .dropbtn {
+       font-size: 1.5rem;
+   }
+
+
+   .navbar ul li .dropbtn i {
+       font-size: 2.5rem;
+   }
+
+
+   .logo {
+       width: 100%;
+       height: auto;
+       max-width: 90px;
+       max-height: 90px;
+   }
+
+
+   .login {
+       font-size: 4rem;
+   }
+}
+
+
+/* Extra Large Desktop Screen */
+@media (min-width: 2561px) {
+   .navbar {
+       padding: 0 1.5rem 0 1.2rem;
+       max-width: 1500px;
+       height: 110px;
+       max-height: 110px;
+   }
+
+
+   .navbar ul {
+       width: 75%;
+       max-height: 120px;
+   }
+
+
+   .navbar ul li:first-child {
+       justify-content: flex-start;
+       text-align: left;
+   }
+
+
+   .navbar ul li a,
+   .navbar ul li .dropbtn {
+       font-size: 1.7rem;
+   }
+
+
+   .navbar ul li .dropbtn i {
+       font-size: 2.8rem;
+   }
+
+
+   .logo {
+       width: 100%;
+       height: auto;
+       max-width: 95px;
+       max-height: 95px;
+   }
+
+
+   .login {
+       font-size: 5rem;
+   }
+}

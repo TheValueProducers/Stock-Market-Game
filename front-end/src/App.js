@@ -1,6 +1,7 @@
 import {StockProvider} from "./context/stockContext"
 import './App.css';
-import LineChart from './pages/LineChart';
+import LineChart from './pages/lineChart';
+import LogIn from "./pages/LogIn"
 import {Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <StockProvider>
       <Routes>
         <Route exact path = "/stocks/graph/:shareName" element = {<LineChart />} />
+        <Route exact path = "/log-in" element = {<LogIn />} />
       </Routes>
     </StockProvider>
       
