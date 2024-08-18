@@ -784,11 +784,12 @@ main{
 @media (min-width: 1280px) and (max-width: 1440px) {
     .container-1 div, .container-2 .text-content, .container-3 h1, .container-4 h1, .container-5 .content-1-desc, .goal p {
         width: 100%;
-    
-
     }
 
+
+
     .container-1 h1{
+        margin-top:5rem ;
         width: 15ch;
     }
 
