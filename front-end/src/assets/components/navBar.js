@@ -1,9 +1,10 @@
 import "../styles/navBar.css"
+import LightBulb from "../images/light_bulb.png"
 const NavBar = () => {
     return (
         <nav class="navbar-container">
         <div class="navbar">
-            <img class="logo" src="../assets/images/home-page/bvis-sm-icon.png" alt="Logo" />
+            <img class="logo" src={LightBulb} alt="Logo" />
            
          
             <div class="menu-icon">
