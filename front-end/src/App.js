@@ -5,6 +5,7 @@ import LogIn from "./pages/LogIn";
 import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from "./assets/components/ProtectedRoute";
 import { AuthProvider } from './context/authProvider';
+import Register from "./pages/Register"
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            
             <Route path="/log-in" element={<LogIn />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </AuthProvider>
       </StockProvider>
