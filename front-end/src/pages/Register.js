@@ -1,67 +1,82 @@
-import React from 'react';
-import NavBar from "../assets/components/navBar"
-import '../assets/styles/register.css'; // Make sure to link your CSS file correctly
+import React, { useState, useEffect, useContext } from 'react';
+import "../assets/styles/lineChart.css";
+import LightBulb from "../assets/images/light_bulb.png";
+import { IgrFinancialChart } from 'igniteui-react-charts';
+import { IgrFinancialChartModule } from 'igniteui-react-charts';
+import { useParams } from 'react-router-dom';
+import { generateStockData } from './stockData'; // Import the generateStockData function
+import { StockContext } from '../context/stockContext';
 
-const Register = () => {
-    const toggleMenu = () => {
-        document.querySelector('.navbar ul.navbar-menu').classList.toggle('active');
-    };
+IgrFinancialChartModule.register();
+
+const FinancialChartPanes = () => {
+    const { shareName } = useParams();
+    const { stockData, setStockData } = useContext(StockContext);
+
+    useEffect(() => {
+        // Generate stock data when the component mounts
+        const data = generateStockData();
+        setStockData(data);
+    }, [setStockData]);
 
     return (
         <>
-            <NavBar />
-            <section>
-                <img 
-                    src="../assets/images/sign-up/Screenshot 2024-07-10 222659.png" 
-                    className="bull-image" 
-                    alt="Sign Up Visual" 
-                />
-                <div className="form-signup">
-                    <h1>Sign Up</h1>
-                    <input 
-                        type="text" 
-                        name="fullname" 
-                        id="Fullname" 
-                        placeholder="  Full name" 
-                    />
-                    <input 
-                        type="date" 
-                        name="date" 
-                        id="date" 
-                    />
-                    <input 
-                        type="text" 
-                        name="username" 
-                        id="username" 
-                        placeholder="  Username" 
-                    />
-                    <input 
-                        type="password" 
-                        name="password" 
-                        id="password" 
-                        placeholder="  Password" 
-                    />
-                    <input 
-                        type="password" 
-                        name="confirm-password" 
-                        id="confirm-password" 
-                        placeholder="  Confirm Password" 
-                    />
-                    <input 
-                        type="submit" 
-                        value="Create" 
-                    />
-                    <p className="link-login">
-                        Already have an account? Log in 
-                        <a href="#" className="here-word"> here</a>!
-                    </p>
+            <header className='header'>
+                <h1 className='username'>Username</h1>
+                <div className='line'></div>
+            </header>
+            <section className='content'>
+                <div className='top-section'>
+                    <div className='info'>
+                        <img className='info-icon' src={LightBulb} alt="Info Icon" />
+                        <div className='info-content'>
+                            <div>Time Elapsed: 1 Month</div>
+                            <div>Cash:</div>
+                            <div>Net Worth:</div>
+                        </div>
+                    </div>
+                    <div className='stock-action'>
+                        <div className='top-section-action'>
+                            <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/625px-Apple_logo_black.svg.png" alt="Apple Logo" />
+                            <div className='company-info'>
+                                <h2>Apple Inc. (APPL)</h2>
+                                <p>0 shares</p>
+                            </div>
+                        </div>
+                        <h3 className='price'>Price 81.74$</h3>
+                        <h3 className='quantity'>Quantity: 10</h3>
+                        <div className='action'>
+                            <button className='buy'>Buy</button>
+                            <button className='sell'>Sell</button>
+                        </div>
+                        <input type="number" className='choose-quantity' />
+                    </div>
                 </div>
-                <button className="menu-icon" onClick={toggleMenu}>
-                    {/* Add your menu icon here */}
-                </button>
+                <div className='graph'>
+                    <h2 className='share-name'>{shareName}</h2>
+                    <div className='graph-container'>
+                        <div className='graph-wrapper'>
+                            <IgrFinancialChart
+                                width="100%"
+                                height="100%"
+                                chartType="Candle"
+                                zoomSliderType="Candle"
+                                volumeType="Area"
+                                overlayBrushes="rgba(5, 138, 0, 0.17)"
+                                overlayOutlines="rgba(5, 138, 0, 0.4)"
+                                overlayThickness={1}
+                                dataSource={stockData}
+                            />
+                        </div>
+                    </div>
+                </div>
             </section>
+            <footer>
+                <div className='line'></div>
+                <div className='game-code'>234h28</div>
+            </footer>
         </>
     );
 };
 
-export default Register;
+export default FinancialChartPanes;

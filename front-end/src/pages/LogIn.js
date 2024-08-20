@@ -2,6 +2,7 @@ import "../assets/styles/logIn.css";
 import NavBar from "../assets/components/navBar"
 import BearImage from "../assets/images/bear_image.png";
 const LogIn = () => {
+    
     return (
         <>
         <NavBar />

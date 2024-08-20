@@ -1,13 +1,16 @@
 import "../styles/navBar.css"
 import LightBulb from "../images/light_bulb.png"
 const NavBar = () => {
+    const toggleMenu = () => {
+        document.querySelector('.navbar ul.navbar-menu').classList.toggle('active');
+    };
     return (
         <nav class="navbar-container">
         <div class="navbar">
             <img class="logo" src={LightBulb} alt="Logo" />
            
          
-            <div class="menu-icon">
+            <div class="menu-icon" onClick={toggleMenu}>
                 <i class="bx bx-menu"></i>
             </div>
            

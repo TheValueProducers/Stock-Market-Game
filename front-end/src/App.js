@@ -16,9 +16,10 @@ function App() {
             <Route
               path="/stocks/graph/:shareName"
               element={
-                <ProtectedRoute>
+               <ProtectedRoute>
                   <LineChart />
                 </ProtectedRoute>
+                
               }
             />
             
