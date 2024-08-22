@@ -71,7 +71,7 @@ function Register() {
                     className="bull-image"
                     alt="Bull"
                 />
-                <div className="form-signup">
+                <form className="form-signup" onSubmit={submitHandler}>
                     <h1>Sign Up</h1>
                     <input type="text" name="fullname" id="Fullname" placeholder="Full name" onChange={(e) => setFullName(e.target.value)} />
                     <input type="email" name="email" id="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
@@ -79,11 +79,11 @@ function Register() {
                     <input type="text" name="username" id="username" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
                     <input type="password" name="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     <input type="password" name="password" id="confirm-password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} />
-                    <input type="submit" value="Create" onClick={submitHandler} />
+                    <input type="submit" value="Create"  />
                     <p className="link-login">
                         Already have an account? Log in <Link to="/log-in" className="here-word">here</Link>!
                     </p>
-                </div>
+                </form>
             </section>
         </div>
     );

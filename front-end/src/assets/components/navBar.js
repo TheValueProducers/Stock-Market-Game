@@ -1,7 +1,9 @@
 import "../styles/navBar.css";
 import LightBulb from "../images/light_bulb.png";
+import {useAuth} from "../../context/authProvider"
 
 const NavBar = () => {
+    const {isAuthenticated} = useAuth();
     const toggleMenu = () => {
         const menu = document.querySelector('.navbar-menu');
         if (menu) {
@@ -64,13 +66,14 @@ const NavBar = () => {
                         </div>
                     </li>
                     <li className="dropdown acc">
-                        <button id="account" className="dropbtn">
-                            Log In  
+                        <i className='bx bx-user-circle login'></i>
+                        <button id="account" className="dropbtn login-dropdown">
+                            {isAuthenticated? "Log Out": "Log In"} 
                         </button>
                     </li>
                 </ul>
 
-                <i className='bx bx-user-circle login'></i>
+                
             </div>
         </nav>
     );

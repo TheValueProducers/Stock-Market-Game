@@ -8,12 +8,11 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  
   
   
 
-  const login = async () => {
+  const login = async (username, password) => {
     await axios.post("http://localhost:3001/api/v1/user/login", {username, password})
     .then(response => {
       if (!response.ok && response.status === 401){
@@ -22,7 +21,7 @@ export const AuthProvider = ({ children }) => {
       }else{
         
         setIsAuthenticated(true);
-        navigate("/home");
+        
       }
     })
     .catch((err) => {

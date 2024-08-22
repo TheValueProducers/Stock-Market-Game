@@ -142,10 +142,8 @@
 }
 
 
-/* Hide the .acc class by default */
-.acc {
-   display: none;
-}
+
+
 
 
 /* Smartphone Screen */
@@ -328,6 +326,7 @@
 
    .navbar ul li .dropbtn i {
        font-size: 2.5rem;
+      
    }
 
 
@@ -341,7 +340,36 @@
 
    .login {
        font-size: 4rem;
+       margin-left: 1.5vw;
+       cursor: pointer;
    }
+
+   
+   
+   .acc{
+        position: relative;
+   }
+   #account {
+    position: absolute;
+    display: none;
+    width: 8vw;
+    text-align: center;
+    background-color: var(--bg1-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.login:hover + #account {
+    color: var(--t1-color);
+    text-align: center;
+    
+    display: block;
+}
+
+#account:hover {
+    display: block;
+    background-color: var(--bg2-color);
+    transition: background-color 0.3s ease;
+}
 }
 
 

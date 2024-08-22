@@ -57,7 +57,7 @@ main{
     justify-content: center;
     background-image: 
     linear-gradient(var(--bg1-color-opacity), var(--bg1-color-opacity)), 
-    url('../assets/images/home-page/img-1.png');
+    url('../images/homepage/img-1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -123,7 +123,7 @@ main{
     justify-content: center;
     background-image: 
         linear-gradient(var(--bg1-color-opacity), var(--bg1-color-opacity)), 
-        url('../assets/images/home-page/img-2.jpg');
+        url('../images/homepage/img-2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -172,7 +172,7 @@ main{
     justify-content: center;
     background-image: 
         linear-gradient(var(--bg1-color-opacity), var(--bg1-color-opacity)), 
-        url('../assets/images/home-page/img-3.jpg');
+        url('../images/homepage/img-3.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -251,7 +251,7 @@ main{
     
     background-image: 
         linear-gradient(var(--bg1-color-opacity), var(--bg1-color-opacity)), 
-        url('../assets/images/home-page/img-4.jpg');
+        url('../images/homepage/img-4.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -308,7 +308,7 @@ main{
     justify-content: center;
     background-image: 
         linear-gradient(var(--bg1-color-opacity), var(--bg1-color-opacity)), 
-        url('../assets/images/home-page/img-5.jpg');
+        url('../images/homepage/img-5.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -486,7 +486,7 @@ main{
 
     background-image: 
         linear-gradient(var(--bg1-color-opacity), var(--bg1-color-opacity)), 
-        url('../assets/images/home-page/img-7.jpg');
+        url('../images/homepage/img-7.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

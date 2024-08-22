@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from "./assets/components/ProtectedRoute";
 import { AuthProvider } from './context/authProvider';
 import Register from "./pages/Register"
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
@@ -14,10 +15,19 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route
-              path="/stocks/graph/:shareName"
+              exact path="/stocks/graph/:shareName"
               element={
                <ProtectedRoute>
                   <LineChart />
+                </ProtectedRoute>
+                
+              }
+            />
+            <Route
+              exact path="/home"
+              element={
+               <ProtectedRoute>
+                  <HomePage />
                 </ProtectedRoute>
                 
               }
