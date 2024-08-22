@@ -14,14 +14,15 @@ const checkUniqueUser = async (username, email) => {
 
 async function registerUser(req, res) {
   try {
-    const { username, password, email } = req.body;
+    const { username, password, email, full_name, date_of_birth } = req.body;
+    
     const isUnique = await checkUniqueUser(username, email);
     if (!isUnique) {
       return res.status(400).json({ message: 'Username or email already in use' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    const user = await User.create({ username, password: hashedPassword, email, role: 'user' });
+    const user = await User.create({ username, password: hashedPassword, email, role: 'user', full_name, date_of_birth });
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
     res.status(500).json({ message: 'User registration failed', error: err.message });

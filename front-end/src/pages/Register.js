@@ -1,82 +1,92 @@
-import React, { useState, useEffect, useContext } from 'react';
-import "../assets/styles/lineChart.css";
-import LightBulb from "../assets/images/light_bulb.png";
-import { IgrFinancialChart } from 'igniteui-react-charts';
-import { IgrFinancialChartModule } from 'igniteui-react-charts';
-import { useParams } from 'react-router-dom';
-import { generateStockData } from './stockData'; // Import the generateStockData function
-import { StockContext } from '../context/stockContext';
+import React, { useEffect, useState } from 'react';
+import NavBar from "../assets/components/navBar"
+import '../assets/styles/register.css';
+import BullImage from '../assets/images/bull-image.png';
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-IgrFinancialChartModule.register();
+function Register() {
+    const navigate = useNavigate();
+    const [fullName, setFullName] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
 
-const FinancialChartPanes = () => {
-    const { shareName } = useParams();
-    const { stockData, setStockData } = useContext(StockContext);
+    const checkPasswordResult = (password, confirmPassword) => {
+        if (password.length < 6) {
+            return {
+                create_password: false,
+                message: "Password is less than 6 characters"
+            };
+        }
+        if (password !== confirmPassword) {
+            return {
+                create_password: false,
+                message: "The passwords do not match"
+            };
+        }
+        return {
+            create_password: true,
+            message: "Password created"
+        };
+    };
 
-    useEffect(() => {
-        // Generate stock data when the component mounts
-        const data = generateStockData();
-        setStockData(data);
-    }, [setStockData]);
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        const result = checkPasswordResult(password, confirmPassword);
+        if (!result.create_password) {
+            alert(result.message);
+            return;
+        } else {
+            try {
+                const response = await axios.post("http://localhost:3001/api/v1/user/register", {
+                    full_name: fullName,
+                    date_of_birth: new Date(dateOfBirth),
+                    password,
+                    username,
+                    email
+                });
+                alert("Register Successful");
+                navigate("/log-in");
+            } catch (error) {
+                if (error.response && error.response.status === 400) {
+                    alert("Username or email is already in use");
+                } else {
+                    alert("Failed to register user");
+                    console.error(error);
+                }
+            }
+        }
+    };
 
+    
     return (
-        <>
-            <header className='header'>
-                <h1 className='username'>Username</h1>
-                <div className='line'></div>
-            </header>
-            <section className='content'>
-                <div className='top-section'>
-                    <div className='info'>
-                        <img className='info-icon' src={LightBulb} alt="Info Icon" />
-                        <div className='info-content'>
-                            <div>Time Elapsed: 1 Month</div>
-                            <div>Cash:</div>
-                            <div>Net Worth:</div>
-                        </div>
-                    </div>
-                    <div className='stock-action'>
-                        <div className='top-section-action'>
-                            <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/625px-Apple_logo_black.svg.png" alt="Apple Logo" />
-                            <div className='company-info'>
-                                <h2>Apple Inc. (APPL)</h2>
-                                <p>0 shares</p>
-                            </div>
-                        </div>
-                        <h3 className='price'>Price 81.74$</h3>
-                        <h3 className='quantity'>Quantity: 10</h3>
-                        <div className='action'>
-                            <button className='buy'>Buy</button>
-                            <button className='sell'>Sell</button>
-                        </div>
-                        <input type="number" className='choose-quantity' />
-                    </div>
-                </div>
-                <div className='graph'>
-                    <h2 className='share-name'>{shareName}</h2>
-                    <div className='graph-container'>
-                        <div className='graph-wrapper'>
-                            <IgrFinancialChart
-                                width="100%"
-                                height="100%"
-                                chartType="Candle"
-                                zoomSliderType="Candle"
-                                volumeType="Area"
-                                overlayBrushes="rgba(5, 138, 0, 0.17)"
-                                overlayOutlines="rgba(5, 138, 0, 0.4)"
-                                overlayThickness={1}
-                                dataSource={stockData}
-                            />
-                        </div>
-                    </div>
+        <div>
+            <NavBar />
+            <section>
+                <img
+                    src={BullImage}
+                    className="bull-image"
+                    alt="Bull"
+                />
+                <div className="form-signup">
+                    <h1>Sign Up</h1>
+                    <input type="text" name="fullname" id="Fullname" placeholder="Full name" onChange={(e) => setFullName(e.target.value)} />
+                    <input type="email" name="email" id="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="date" name="date" id="date" onChange={(e) => setDateOfBirth(e.target.value)} />
+                    <input type="text" name="username" id="username" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+                    <input type="password" name="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" name="password" id="confirm-password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} />
+                    <input type="submit" value="Create" onClick={submitHandler} />
+                    <p className="link-login">
+                        Already have an account? Log in <Link to="/log-in" className="here-word">here</Link>!
+                    </p>
                 </div>
             </section>
-            <footer>
-                <div className='line'></div>
-                <div className='game-code'>234h28</div>
-            </footer>
-        </>
+        </div>
     );
-};
+}
 
-export default FinancialChartPanes;
+export default Register;

@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const session = require("express-session");
 const passport = require("passport");
+const cors = require('cors');
 const initializePassport = require("./config/passport");
 const { sequelize } = require("./models");
 const router = require("./routes/index");
@@ -20,7 +21,11 @@ const io = initializeSocketIo(server); // Call the function to initialize Socket
 // Function to initialize and start the application
 function initializeApp() {
   initializePassport(passport);
-
+  app.use(cors({
+    origin: 'http://localhost:3000', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+  }));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 
@@ -51,7 +56,7 @@ function initializeApp() {
   });
 }
 
-// Connect to Redis and start the application
+
 redisClient.connect().then(() => {
   initializeApp();
 }).catch(err => {

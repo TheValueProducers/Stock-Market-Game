@@ -1,13 +1,37 @@
 import React, { createContext, useState, useContext } from 'react';
+import {useNavigate} from "react-router-dom"
+import axios from "axios";
 
 // Create a context for authentication
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  
+  
 
-  const login = () => {
-    setIsAuthenticated(true);
+  const login = async () => {
+    await axios.post("http://localhost:3001/api/v1/user/login", {username, password})
+    .then(response => {
+      if (!response.ok && response.status === 401){
+        alert("Incorrect Password")
+        return
+      }else{
+        
+        setIsAuthenticated(true);
+        navigate("/home");
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+    }
+  )
+    
+
+    
   };
 
   const logout = () => {
