@@ -1,9 +1,12 @@
 import "../styles/navBar.css";
 import LightBulb from "../images/light_bulb.png";
-import {useAuth} from "../../context/authProvider"
+import { useAuth } from "../../context/authProvider";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-    const {isAuthenticated} = useAuth();
+    const navigate = useNavigate();
+    const { isAuthenticated, logout } = useAuth();
+
     const toggleMenu = () => {
         const menu = document.querySelector('.navbar-menu');
         if (menu) {
@@ -20,6 +23,16 @@ const NavBar = () => {
         } else {
             console.error('Dropdown content not found');
         }
+    };
+
+    const handleAuthAction = () => {
+        if (isAuthenticated){
+            logout();
+        }else{
+            navigate("/log-in")
+        }
+         
+        
     };
 
     return (
@@ -67,16 +80,18 @@ const NavBar = () => {
                     </li>
                     <li className="dropdown acc">
                         <i className='bx bx-user-circle login'></i>
-                        <button id="account" className="dropbtn login-dropdown">
-                            {isAuthenticated? "Log Out": "Log In"} 
+                        <button
+                            id="account"
+                            className="dropbtn login-dropdown"
+                            onClick={handleAuthAction}
+                        >
+                            {isAuthenticated ? "Log Out" : "Log In"}
                         </button>
                     </li>
                 </ul>
-
-                
             </div>
         </nav>
     );
-}
+};
 
 export default NavBar;
