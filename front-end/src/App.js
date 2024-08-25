@@ -7,6 +7,7 @@ import ProtectedRoute from "./assets/components/ProtectedRoute";
 import { AuthProvider } from './context/authProvider';
 import Register from "./pages/Register"
 import HomePage from "./pages/HomePage"
+import MultiplayerHost from "./pages/MultiplayerHost";
 
 function App() {
   return (
@@ -28,6 +29,15 @@ function App() {
               element={
                <ProtectedRoute>
                   <HomePage />
+                </ProtectedRoute>
+                
+              }
+            />
+            <Route
+              exact path="/multiplayer/host"
+              element={
+               <ProtectedRoute>
+                  <MultiplayerHost />
                 </ProtectedRoute>
                 
               }

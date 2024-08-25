@@ -55,7 +55,7 @@ const NavBar = () => {
                         </button>
                         <div className="dropdown-content">
                             <a href="#">Singleplayer</a>
-                            <a href="#">Multiplayer</a>
+                            <a href="#" onClick={() => navigate("/multiplayer/host")}>Multiplayer</a>
                         </div>
                     </li>
                     <li className="dropdown">
