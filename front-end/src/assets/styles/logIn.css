@@ -117,8 +117,8 @@ input[type=submit] {
 }
 
 
-.here-word {
-   margin-left: 0.2rem;
+p .here-word {
+   margin-left: 0.3rem;
 }
 
 
@@ -195,7 +195,7 @@ input[type=submit] {
 
 
    .form-login {
-       width: 80%;
+       width: 80vw;
        height: 50vh;
    }
 
@@ -287,31 +287,33 @@ input[type=submit] {
 
 
    .form-login {
-       width: 75%;
+       width: 75vw;
        height: 50vh;
    }
 
 
    .form-login > h1 {
        padding: 50px 0 30px 0;
-       font-size: 30px;
+       
+       font-size: 3rem;
    }
 
 
-   input[type=text], input[type=password] {
+   .form-login input[type=text], .form-login input[type=password] {
        width: 80%;
-       margin-top: 25px;
+       margin-top: 2vh;
+       font-size: 2rem;
    }
 
 
-   input[type=submit] {
-       width: 35%;
-       font-size: 18px;
+   .form-login input[type=submit] {
+       width: 30vw;
+       font-size: 2rem;
    }
 
 
    .link-signup {
-       font-size: 14px;
+       font-size: 1.5rem;
    }
 }
 
@@ -566,7 +568,7 @@ input[type=submit] {
    }
 
 
-   input[type=submit] {
+   .form-login input[type=submit] {
        width: 30%;
        font-size: 22px;
    }

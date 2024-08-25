@@ -149,7 +149,8 @@
 /* Smartphone Screen */
 @media (max-width: 768px) {
    .navbar-container{
-       position: relative;
+       position: fixed;
+       margin-top: 1vh;
    }
 
 
