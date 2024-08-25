@@ -8,6 +8,7 @@ import { AuthProvider } from './context/authProvider';
 import Register from "./pages/Register"
 import HomePage from "./pages/HomePage"
 import MultiplayerHost from "./pages/MultiplayerHost";
+import LobbyMultiplayer from "./pages/LobbyMultiplayer";
 
 function App() {
   return (
@@ -38,6 +39,15 @@ function App() {
               element={
                <ProtectedRoute>
                   <MultiplayerHost />
+                </ProtectedRoute>
+                
+              }
+            />
+            <Route
+              exact path="/multiplayer/lobby"
+              element={
+               <ProtectedRoute>
+                  <LobbyMultiplayer />
                 </ProtectedRoute>
                 
               }

@@ -1,0 +1,1047 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+:root {
+   --t1-color: #fff;
+   --t2-color: #2CF3B6;
+   --op-color: #d2503f;
+   --bg1-color: #1D2028;
+   --bg2-color: #2CF3B6;
+   --bg3-color: #fff;
+   --bgh-color: #0DE7A6;
+}
+
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   text-decoration: none;
+   outline: none;
+   scroll-behavior: smooth;
+   font-family: "Inter", sans-serif;
+}
+
+
+/**/
+html,
+body {
+  
+   background-color: var(--bg1-color);
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   padding-top: 0;
+   height: 100vh;
+   width: 100vw;
+   margin-top: 5vh;
+  
+
+
+}
+
+
+
+
+
+
+
+
+.game-pin {
+
+
+   display: flex;
+   width: 100vw;
+   margin-top: 0;
+   padding-top: 0;
+   flex-direction: column;
+   align-items: center;
+   font-size: 2rem;
+   font-weight: bolder;
+   justify-content: center;
+   
+}
+
+
+.blur {
+   filter: blur(5px);
+}
+
+
+
+
+.top-pin{
+   margin-bottom: 1vh;
+ 
+}
+.game-pin .top-pin p {
+   display: flex;
+   align-items: center;
+   color: black;
+   background-color: white;
+   width: 38vw;
+   padding: 2vh 1vw;
+  
+   justify-content: flex-start;
+
+
+}
+
+
+
+
+.game-pin p span {
+   text-decoration: underline;
+   margin-left: 0.3rem;
+}
+
+
+.pin{
+   width: 18vw;
+ 
+  
+}
+
+
+.with-game-pin{
+   font-size: 1.3rem;
+}
+.pin div{
+   background-color: white;
+   color: black;
+   padding-left: 1vw;
+  
+}
+
+
+.code{
+   font-size: 3rem;
+   font-weight: 800;
+}
+
+
+
+
+
+
+
+
+
+
+.player-number {
+ 
+   margin-right: 88vw;
+   color: var(--t1-color);
+   margin-top: 4vh;
+   margin-bottom: 4vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+  
+
+
+}
+
+
+.player{
+   font-weight: 300;
+   font-size: 1.7rem;
+}
+
+
+.number{
+   font-weight: 900;
+   font-size: 2.4rem;
+}
+
+
+.start {
+   font-size: 2rem;
+   font-weight: bold;
+   color: var(--t1-color);
+   background: var(--bg2-color);
+   border-style: none;
+   border-radius: 0.3rem;
+ 
+   margin-left: 85vw;
+   cursor: pointer;
+  
+   height: 6vh;
+   width: 8vw;
+}
+
+
+.container {
+  
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   justify-content: center;
+   width: 100vw;
+   row-gap: 3vw;
+   column-gap: 2vh;
+}
+
+
+.name {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: transparent;
+   border-radius: 10px;
+   font-size: 2rem;
+   font-weight: bold;
+   color: var(--t1-color);
+   border: solid 2px var(--bg2-color);
+   width: 23vw;
+   height: 12vh;
+}
+
+
+@media (min-width: 320px) and (max-width: 375px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 90vw;
+       padding: 2vh 1vw;
+       font-size: 1.2rem;
+      
+       justify-content: flex-start;
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 2vh;
+   }
+
+
+   .pin{
+       width: 90vw;
+   }
+
+
+   .with-game-pin{
+       width: 72vw;
+   }
+
+
+   .code{
+       width: 72vw;
+   }
+
+
+   .start{
+       margin-left: 75vw;
+       font-size: 1.2rem;
+       width: 20vw;
+   }
+
+
+   .player-number{
+       margin-right: 70vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1rem;
+   }
+   .number{
+       font-size: 1.4rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 1.4rem;
+       height: auto;
+       padding: 2vh 3vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 376px) and (max-width: 430px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 90vw;
+       padding: 2vh 1vw;
+       font-size: 1.2rem;
+      
+       justify-content: flex-start;
+  
+   }
+
+
+   .pin{
+       width: 90vw;
+   }
+
+
+   .with-game-pin{
+       width: 70vw;
+   }
+
+
+   .code{
+       width: 70vw;
+   }
+
+
+   .start{
+       margin-left: 75vw;
+       font-size: 1.2rem;
+       width: 20vw;
+   }
+
+
+   .player-number{
+       margin-right: 70vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1rem;
+   }
+   .number{
+       font-size: 1.4rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 1.4rem;
+       height: auto;
+       padding: 2vh 3vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 431px) and (max-width: 480px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 90vw;
+       padding: 2vh 1vw;
+       font-size: 1.5rem;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 2vh;
+   }
+
+
+   .pin{
+       width: 90vw;
+   }
+
+
+   .with-game-pin{
+       width: 70vw;
+   }
+
+
+   .code{
+       width: 70vw;
+      
+   }
+
+
+   .start{
+       margin-left: 75vw;
+       font-size: 1.5rem;
+       width: 20vw;
+   }
+
+
+   .player-number{
+       margin-right: 80vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1rem;
+   }
+   .number{
+       font-size: 1.6rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 1.6rem;
+       height: auto;
+       padding: 2vh 3vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 481px) and (max-width: 800px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 90vw;
+       padding: 2vh 1vw;
+       font-size: 1.6rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 90vw;
+   }
+
+
+   .with-game-pin{
+       width: 60vw;
+   }
+
+
+   .code{
+       width: 60vw;
+      
+   }
+
+
+   .start{
+       margin-left: 75vw;
+       font-size: 1.7rem;
+       width: 18vw;
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 80vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1.5rem;
+   }
+   .number{
+       font-size: 2rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 1.8rem;
+       height: auto;
+       padding: 1.5vh 1.5vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 801px) and (max-width: 1024px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 90vw;
+       padding: 2vh 1vw;
+       font-size: 2.8rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 90vw;
+      
+   }
+
+
+   .with-game-pin{
+       width: 60vw;
+       border: none;
+       font-size: 1.5rem;
+   }
+
+
+   .code{
+       width: 60vw;
+       border: none;
+       font-size: 4rem;
+      
+   }
+
+
+   .start{
+       margin-left: 75vw;
+       font-size: 2.8rem;
+       width: 18vw;
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 85vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1.8rem;
+   }
+   .number{
+       font-size: 2.7rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 1.8rem;
+       height: auto;
+       padding: 1.5vh 1.5vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 50vw;
+       padding: 2vh 1vw;
+       font-size: 2rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 50vw;
+      
+   }
+
+
+   .with-game-pin{
+       width: 30vw;
+       border: none;
+       font-size: 1.5rem;
+   }
+
+
+   .code{
+       width: 30vw;
+       border: none;
+       font-size: 4rem;
+      
+   }
+
+
+   .start{
+       margin-left: 80vw;
+       font-size: 2rem;
+       width: 12vw;
+       height: 8vh;
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 85vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1.8rem;
+   }
+   .number{
+       font-size: 2.7rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 2rem;
+       height: auto;
+       padding: 3vh 0.7vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 1281px) and (max-width: 1366px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 50vw;
+       padding: 2vh 1vw;
+       font-size: 2.3rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 50vw;
+      
+   }
+
+
+   .with-game-pin{
+       width: 30vw;
+       border: none;
+       font-size: 1.5rem;
+   }
+
+
+   .code{
+       width: 30vw;
+       border: none;
+       font-size: 4rem;
+      
+   }
+
+
+   .start{
+       margin-left: 80vw;
+       font-size: 2rem;
+       width: 12vw;
+       height: 8vh;
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 85vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1.8rem;
+   }
+   .number{
+       font-size: 2.7rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 2rem;
+       height: auto;
+       padding: 3vh 0.7vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 1367px) and (max-width: 1440px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 50vw;
+       padding: 2vh 1vw;
+       font-size: 2.3rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 50vw;
+      
+   }
+
+
+   .with-game-pin{
+       width: 30vw;
+       border: none;
+       font-size: 1.5rem;
+   }
+
+
+   .code{
+       width: 30vw;
+       border: none;
+       font-size: 4rem;
+      
+   }
+
+
+   .start{
+       margin-left: 80vw;
+       font-size: 2rem;
+       width: 12vw;
+       height: 8vh;
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 85vw;
+
+
+   }
+
+
+   .player{
+       font-size: 1.8rem;
+   }
+   .number{
+       font-size: 2.7rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 2rem;
+       height: auto;
+       padding: 3vh 0.7vw;
+   }
+
+
+  
+}
+
+
+
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 50vw;
+       padding: 2vh 1vw;
+       font-size: 3rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 50vw;
+      
+   }
+
+
+   .with-game-pin{
+       width: 30vw;
+       border: none;
+       font-size: 2rem;
+   }
+
+
+   .code{
+       width: 30vw;
+       border: none;
+       font-size: 5rem;
+      
+   }
+
+
+   .start{
+       margin-left: 80vw;
+       font-size: 3rem;
+       width: 12vw;
+       height: 8vh;
+      
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 85vw;
+
+
+   }
+
+
+   .player{
+       font-size: 2rem;
+   }
+   .number{
+       font-size: 3.5rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 5rem;
+       height: auto;
+       padding: 3vh 0.7vw;
+   }
+
+
+  
+}
+
+
+@media (min-width: 1921px) and (max-width: 2560px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 50vw;
+       padding: 2vh 1vw;
+       font-size: 4.5rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 50vw;
+      
+   }
+
+
+   .with-game-pin{
+       width: 30vw;
+       border: none;
+       font-size: 3rem;
+   }
+
+
+   .code{
+       width: 30vw;
+       border: none;
+       font-size: 7rem;
+      
+   }
+
+
+   .start{
+       margin-left: 80vw;
+       font-size: 4.5rem;
+       width: 12vw;
+       height: 8vh;
+      
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 85vw;
+
+
+   }
+
+
+   .player{
+       font-size: 3rem;
+   }
+   .number{
+       font-size: 5rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 3.5rem;
+       height: auto;
+       padding: 3vh 0.7vw;
+   }
+}
+
+
+@media (min-width: 2561px) and (max-width: 3840px) {
+   .game-pin .top-pin p {
+       display: flex;
+       align-items: center;
+       color: black;
+       background-color: white;
+       width: 50vw;
+       padding: 2vh 1vw;
+       font-size: 6rem;
+       height: 10vh;
+      
+       justify-content: flex-start;
+      
+  
+   }
+
+
+   .top-pin{
+       margin-bottom: 3vh;
+   }
+
+
+   .pin{
+       width: 50vw;
+      
+   }
+
+
+   .with-game-pin{
+       width: 30vw;
+       border: none;
+       font-size: 4rem;
+   }
+
+
+   .code{
+       width: 30vw;
+       border: none;
+       font-size: 9rem;
+      
+   }
+
+
+   .start{
+       margin-left: 80vw;
+       font-size: 5.5rem;
+       width: 12vw;
+       height: 8vh;
+      
+  
+   }
+
+
+
+
+   .player-number{
+       margin-right: 85vw;
+
+
+   }
+
+
+   .player{
+       font-size: 4rem;
+   }
+   .number{
+       font-size: 6rem;
+   }
+
+
+   .name{
+       width: 30vw;
+       font-size: 5rem;
+       height: auto;
+       padding: 3vh 0.7vw;
+   }
+
+
+  
+}
