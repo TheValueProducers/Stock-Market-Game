@@ -1,8 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useLocation } from 'react-router-dom';
 import NavBar from "../assets/components/navBar"
 import '../assets/styles/home.css'; // Ensure to import your CSS file here
 
 const HomePage = () => {
+    const location = useLocation();
+    const [sessionId, setSessionId] = useState(null);
+
+    // Scroll to the element if location.hash exists
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.getElementById(location.hash.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [location]);
+
+    // Retrieve session ID from cookies and log it
+    useEffect(() => {
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        };
+
+        const sid = getCookie('connect.sid');
+        setSessionId(sid);
+
+        // Log the session ID to the console
+        console.log('Session ID:', sid);
+    }, []);
     return (
         <>
         <NavBar />

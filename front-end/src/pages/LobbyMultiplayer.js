@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import '../assets/styles/lobby.css';
+import axios from 'axios';
+import { GameContext } from '../context/gamecontext';
 
 const LobbyMultiplayer = () => {
+  const {gameCode} = useContext(GameContext);
   return (
     <div>
       <div className="game-pin">
         <div className="top-pin">
-          <p>
+          <p className='join-game'>
             Join the game at - <span>BVIS-SMG.COM</span>
           </p>
           <div className="pin">
             <div className="with-game-pin">With Game PIN</div>
-            <div className="code">09816723</div>
+            <div className="code">{gameCode}</div>
           </div>
         </div>
         <button className="start">Start</button>

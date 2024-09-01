@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require('express');
 const session = require("express-session");
+const cookieParser = require('cookie-parser');
 const passport = require("passport");
 const cors = require('cors');
 const initializePassport = require("./config/passport");
@@ -21,22 +22,26 @@ const io = initializeSocketIo(server); // Call the function to initialize Socket
 // Function to initialize and start the application
 function initializeApp() {
   initializePassport(passport);
+
+  // CORS configuration with credentials
   app.use(cors({
-    origin: 'http://localhost:3000', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    allowedHeaders: ['Content-Type', 'Authorization'], 
+    origin: 'http://localhost:3000',  
+    credentials: true,  
   }));
+
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
-
+  app.use(cookieParser());
   app.use(session({
-    secret: "5d65dx7456x7",
+    secret: "5d65dx7456x7", // Use environment variable for secret
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    
   }));
 
   app.use(passport.initialize());
   app.use(passport.session());
+ 
 
   app.use("/api/v1", router);
 
@@ -55,7 +60,6 @@ function initializeApp() {
     process.exit();
   });
 }
-
 
 redisClient.connect().then(() => {
   initializeApp();

@@ -17,22 +17,7 @@ section .game-mode {
     font-size: 70px;
  }
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
  
  #host {
     font-size: 40px;
@@ -42,6 +27,7 @@ section .game-mode {
     border: solid 2px var(--bg2-color);
     border-radius: 20px;
     background-color: #252E44;
+    cursor: pointer;
  }
  
  

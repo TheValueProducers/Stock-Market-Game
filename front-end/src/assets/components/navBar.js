@@ -1,7 +1,7 @@
 import "../styles/navBar.css";
 import LightBulb from "../images/light_bulb.png";
 import { useAuth } from "../../context/authProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -46,7 +46,7 @@ const NavBar = () => {
 
                 <ul className="navbar-menu">
                     <li>
-                        <a href="#">Home</a>
+                        <Link to="/">Home</Link>
                     </li>
                     <li className="dropdown">
                         <button className="dropbtn" onClick={toggleDropdown}>
@@ -64,8 +64,8 @@ const NavBar = () => {
                             <i className='bx bx-chevron-down'></i>
                         </button>
                         <div className="dropdown-content">
-                            <a href="#">How the Stocks Market Works</a>
-                            <a href="#">How to Play the Game</a>
+                            <Link to="/#page-3">How the Stocks Market Works</Link>
+                            <Link to="/#page-4">How to Play the Game</Link>
                         </div>
                     </li>
                     <li className="dropdown">
@@ -74,8 +74,8 @@ const NavBar = () => {
                             <i className='bx bx-chevron-down'></i>
                         </button>
                         <div className="dropdown-content">
-                            <a href="#">Our Missions</a>
-                            <a href="#">Our Members</a>
+                            <Link to="/#page-5">Our Missions</Link>
+                            <Link to="/#page-6">Our Members</Link>
                         </div>
                     </li>
                     <li className="dropdown acc">

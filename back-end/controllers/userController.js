@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const { User, sequelize } = require('../models');
-const {Op} = require("sequelize")
+const {Op} = require("sequelize");
+
 
 const checkUniqueUser = async (username, email) => {
   const existingUser = await User.findOne({
@@ -29,40 +30,65 @@ async function registerUser(req, res) {
   }
 }
 
-const authenticateUser = (passport) => (req, res, next) => {
+const loginUser = (passport) => (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      return next(err);
+      return next(err); // Pass the error to the next middleware (error handler)
     }
     if (!user) {
-      return res.status(401).json({ message: info.message });
+      return res.status(401).json({ message: info.message }); // Send an error response if authentication fails
     }
     req.logIn(user, (err) => {
+      
       if (err) {
-        return next(err);
+        return next(err); // Pass the error to the next middleware (error handler)
       }
-      next();
+      // Send a success response if login succeeds
+      return res.status(200).json({ message: 'Successful Login', user: req.user });
     });
   })(req, res, next);
 };
 
-const loginEndpoint = (req, res) => {
-  res.status(200).json({ message: 'Successful Login' });
-};
+
 
 const userLogout = (req, res) => {
+  console.log("Initiating logout process...");
+
   req.logout((err) => {
     if (err) {
+      console.error("Error during logout:", err);
       return res.status(500).send({ message: 'Failed to log out' });
     }
+
+    // Manually clear req.user to ensure the user is logged out
+   
+
+    // Destroy the session
     req.session.destroy((err) => {
       if (err) {
+        console.error("Error during session destruction:", err);
         return res.status(500).send({ message: 'Failed to destroy session' });
       }
-      res.clearCookie('connect.sid');
+
+      // Clear the session cookie
+      res.clearCookie('connect.sid', { path: '/' });
+
+      console.log("Logout successful.");
+
+      // Send the success message
       return res.status(200).send({ message: 'Logged out successfully' });
     });
   });
 };
+const authCheck = (req,res) => {
+  console.log(`Req authenticated is: `, req.isAuthenticated());
+  console.log(req.user);
+  
+  if (req.isAuthenticated()) {
+    res.json({ isAuthenticated: true });
+  } else {
+    res.json({ isAuthenticated: false });
+  }
+}
 
-module.exports = { loginEndpoint, registerUser, authenticateUser, userLogout };
+module.exports = { registerUser, loginUser , userLogout, authCheck };

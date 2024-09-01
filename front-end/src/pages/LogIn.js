@@ -15,7 +15,7 @@ const LogIn = () => {
         e.preventDefault();
         login(username, password);
         if (isAuthenticated){
-            navigate("/home")
+            navigate("/")
         }
     };
 

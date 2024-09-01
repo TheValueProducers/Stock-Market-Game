@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { createGame } = require("../controllers/gameController")
+const { createGame, checkGameCreated } = require("../controllers/gameController")
 const {checkAuthenticated, checkGameAuthenticated, checkHost} = require("../middleware/authenticate")
 
-router.post("/create",checkAuthenticated, createGame)
+router.post("/create",createGame)
+router.get("/check-game", checkGameCreated)
 
 
 

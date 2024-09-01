@@ -9,12 +9,12 @@ const createGame = async (req, res) => {
       where: {
         status: "on_game"
       }
-    }).then(games => games.map(game => game.game_code));
+    }).then(games => games.length > 0 ? games.map(game => game.game_code) : []);
 
     let game_code = generateRandomCode();
     
     // Ensure the new game code is unique
-    while (gameCodes.length !== 0 && gameCodes.includes(game_code)) {
+    while (gameCodes.includes(game_code)) {
       game_code = generateRandomCode();
     }
 
@@ -23,7 +23,7 @@ const createGame = async (req, res) => {
       game_code,
       user_id: req.user.user_id,
       end_at: null,
-      status: "waiting",
+      status: "on_game",
     });
 
     // Store the game_id in the session
@@ -34,6 +34,28 @@ const createGame = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send({ message: "Internal Server Error" });
+  }
+};
+
+const checkGameCreated = async (req, res) => {
+  try {
+    console.log("req.user is: ", req.user);
+    
+    const game = await Game.findOne({
+      where: {
+        user_id: req.user.user_id,
+        status: "on_game"
+      }
+    });
+
+    if (game) {
+      res.status(200).json({ game_code: game.game_code, game_created: true });
+    } else {
+      res.status(200).json({ game_code: null, game_created: false });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -49,4 +71,4 @@ const finishGame = async (req,res) => {
   })
 }
 
-module.exports = { createGame };
+module.exports = { createGame, checkGameCreated };
