@@ -91,14 +91,13 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Company Code</th>
-                            <th>Current Price($)</th>
-                            <th>Previous Day Price Change(%)</th>
-                            <th>Share Type</th>
-                            <th>Sector</th>
-                            <th>Info</th>
-                            <th>Graph</th>
-
+                            <th class="tooltip" data-tooltip="Company Code">Company Code</th>
+                            <th class="tooltip" data-tooltip="Current Price ($)">Curr. Price($)</th>
+                            <th class="tooltip" data-tooltip="Previous Day Price Change(%)">Prev. Day Change(%)</th>
+                            <th class="tooltip" data-tooltip="Share Type" >Share Type</th>
+                            <th class="tooltip" data-tooltip="Sector">Sector</th>
+                            <th class="tooltip" data-tooltip="Info">Info</th>
+                            <th class="tooltip" data-tooltip="Graph">Graph</th>
                         </tr>
                     </thead>
 
@@ -215,12 +214,10 @@
 
     </footer>
 
-    <div id="overlay" class="overlay">
-        <div class="overlay-text">Your screen is too small to play, please switch to a different device</div>
-    </div>
 
 
-    <script src=""></script>
+
+
     <script src="../script/table-adjustment.js"></script>
     <script src="../script/check-screen-width.js"></script>
     <script src="../script/sector-select-filter.js"></script>
